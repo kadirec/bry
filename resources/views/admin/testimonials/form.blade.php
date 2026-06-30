@@ -128,9 +128,9 @@
   </div>
 </form>
 
-<div id="uploadOverlay" hidden aria-hidden="true" role="dialog" aria-live="polite"
+<div id="uploadOverlay" aria-hidden="true" role="dialog" aria-live="polite"
      style="position:fixed; inset:0; background:rgba(15,23,42,0.72); backdrop-filter:blur(2px);
-            display:flex; align-items:center; justify-content:center; z-index:9999;">
+            display:none; align-items:center; justify-content:center; z-index:9999;">
   <div style="background:#fff; border-radius:14px; padding:28px 32px; min-width:340px; max-width:92vw;
               box-shadow:0 20px 60px rgba(0,0,0,0.35); text-align:center;">
     <div style="display:flex; align-items:center; justify-content:center; gap:12px; margin-bottom:14px;">
@@ -184,7 +184,7 @@
   });
 
   function showOverlay() {
-    overlay.hidden = false;
+    overlay.style.display = 'flex';
     overlay.setAttribute('aria-hidden', 'false');
     bar.style.width = '0%';
     pctEl.textContent = '0%';
@@ -233,18 +233,21 @@
         document.write(xhr.responseText);
         document.close();
       } else {
-        overlay.hidden = true;
+        overlay.style.display = 'none';
+      overlay.setAttribute('aria-hidden', 'true');
         alert('Yükleme sırasında bir hata oluştu (HTTP ' + xhr.status + '). Lütfen tekrar dene.');
       }
     });
 
     xhr.addEventListener('error', () => {
-      overlay.hidden = true;
+      overlay.style.display = 'none';
+      overlay.setAttribute('aria-hidden', 'true');
       alert('Ağ hatası. Bağlantını kontrol edip tekrar dene.');
     });
 
     xhr.addEventListener('abort', () => {
-      overlay.hidden = true;
+      overlay.style.display = 'none';
+      overlay.setAttribute('aria-hidden', 'true');
     });
 
     xhr.open(form.method.toUpperCase(), form.action, true);
