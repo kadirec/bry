@@ -100,7 +100,7 @@ class TestimonialController extends Controller
             'duration'     => ['nullable', 'string', 'max:10'],
             'youtube_id'   => ['nullable', 'string', 'max:200'],
             'sort'         => ['nullable', 'integer', 'min:0'],
-            'video_file_upload'     => ['nullable', 'file', 'mimetypes:video/mp4,video/webm,video/quicktime,video/x-m4v', 'max:204800'],
+            'video_file_upload'     => ['nullable', 'file', 'mimetypes:video/mp4,video/webm,video/quicktime,video/x-m4v', 'max:122880'],
             'thumbnail_file_upload' => ['nullable', 'image', 'mimes:jpg,jpeg,png,webp', 'max:4096'],
         ]);
 
