@@ -196,33 +196,43 @@
       </div>
 
       <div class="reels-wrap">
-        <div class="reels-row" role="list">
-          @foreach($homeTestimonials as $t)
-            @php
-              $trigger = $t->videoTrigger();
-              $poster  = $t->posterUrl();
-            @endphp
-            <button
-              class="reel{{ in_array($t->color, ['plum', null], true) ? '' : ' ' . $t->color }}{{ $poster ? ' has-poster' : '' }}"
-              role="listitem"
-              aria-label="{{ $t->name }} videosunu izle"
-              type="button"
-              @if($poster) style="background-image: url('{{ $poster }}'); background-size: cover; background-position: center;" @endif
-              @if($trigger && $trigger['type'] === 'youtube') data-video-id="{{ $trigger['value'] }}"
-              @elseif($trigger && $trigger['type'] === 'file')   data-video-src="{{ $trigger['value'] }}" data-video-mime="{{ $trigger['mime'] }}" @if($poster) data-video-poster="{{ $poster }}" @endif
-              @else disabled
-              @endif
-            >
-              <div class="reel-ph" aria-hidden="true"></div>
-              <div class="reel-shade" aria-hidden="true"></div>
-              @if($t->tag)<span class="reel-tag">{{ $t->tag }}</span>@endif
-              @if($t->duration)<span class="reel-duration">{{ $t->duration }}</span>@endif
-              <span class="reel-play" aria-hidden="true"></span>
-              <div class="reel-meta">
-                <div class="name">{{ $t->name }}</div>
+        <div class="swiper reels-swiper" data-reels-swiper>
+          <div class="swiper-wrapper">
+            @foreach($homeTestimonials as $t)
+              @php
+                $trigger = $t->videoTrigger();
+                $poster  = $t->posterUrl();
+              @endphp
+              <div class="swiper-slide">
+                <button
+                  class="reel{{ in_array($t->color, ['plum', null], true) ? '' : ' ' . $t->color }}{{ $poster ? ' has-poster' : '' }}"
+                  aria-label="{{ $t->name }} videosunu izle"
+                  type="button"
+                  @if($poster) style="background-image: url('{{ $poster }}'); background-size: cover; background-position: center;" @endif
+                  @if($trigger && $trigger['type'] === 'youtube') data-video-id="{{ $trigger['value'] }}"
+                  @elseif($trigger && $trigger['type'] === 'file')   data-video-src="{{ $trigger['value'] }}" data-video-mime="{{ $trigger['mime'] }}" @if($poster) data-video-poster="{{ $poster }}" @endif
+                  @else disabled
+                  @endif
+                >
+                  <div class="reel-ph" aria-hidden="true"></div>
+                  <div class="reel-shade" aria-hidden="true"></div>
+                  @if($t->tag)<span class="reel-tag">{{ $t->tag }}</span>@endif
+                  @if($t->duration)<span class="reel-duration">{{ $t->duration }}</span>@endif
+                  <span class="reel-play" aria-hidden="true"></span>
+                  <div class="reel-meta">
+                    <div class="name">{{ $t->name }}</div>
+                  </div>
+                </button>
               </div>
-            </button>
-          @endforeach
+            @endforeach
+          </div>
+          <div class="swiper-pagination reels-swiper-pagination"></div>
+          <button type="button" class="reels-nav reels-nav-prev" aria-label="Önceki hikaye">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 18l-6-6 6-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <button type="button" class="reels-nav reels-nav-next" aria-label="Sonraki hikaye">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
         </div>
       </div>
 
@@ -317,3 +327,43 @@
 
   @include('partials.contact-cta')
 @endsection
+
+@push('head')
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+@endpush
+
+@push('scripts')
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js" defer></script>
+<script defer>
+  document.addEventListener('DOMContentLoaded', () => {
+    const el = document.querySelector('[data-reels-swiper]');
+    if (!el || typeof Swiper === 'undefined') return;
+    new Swiper(el, {
+      slidesPerView: 1.2,
+      spaceBetween: 14,
+      centeredSlides: false,
+      grabCursor: true,
+      loop: true,
+      autoplay: {
+        delay: 4000,
+        disableOnInteraction: false,
+        pauseOnMouseEnter: true,
+      },
+      pagination: {
+        el: el.querySelector('.reels-swiper-pagination'),
+        clickable: true,
+      },
+      navigation: {
+        nextEl: el.querySelector('.reels-nav-next'),
+        prevEl: el.querySelector('.reels-nav-prev'),
+      },
+      breakpoints: {
+        520:  { slidesPerView: 2.5, spaceBetween: 16 },
+        780:  { slidesPerView: 3.5, spaceBetween: 18 },
+        1024: { slidesPerView: 4.5, spaceBetween: 20 },
+        1280: { slidesPerView: 4.5, spaceBetween: 22 },
+      },
+    });
+  });
+</script>
+@endpush

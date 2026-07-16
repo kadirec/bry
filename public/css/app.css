@@ -522,21 +522,48 @@
   @media (max-width: 900px) { .message-inner { grid-template-columns: 1fr; } .message-portrait { max-width: 360px; } }
 
   /* ============ REELS (Dönüşen Hayatlar — dik video) ============ */
-  .reels-wrap { position: relative; }
-  .reels-row {
-    display: grid;
-    grid-auto-flow: column;
-    grid-auto-columns: minmax(240px, 1fr);
-    gap: 18px;
-    overflow-x: auto;
-    scroll-snap-type: x mandatory;
-    padding: 8px 4px 28px;
-    -webkit-overflow-scrolling: touch;
-    scrollbar-width: thin;
+  .reels-wrap { position: relative; padding: 0 8px; }
+  .reels-swiper { overflow: hidden; padding: 8px 4px 44px; }
+  .reels-swiper .swiper-slide { height: auto; display: flex; }
+  .reels-swiper .swiper-slide .reel { width: 100%; }
+
+  /* Pagination */
+  .reels-swiper-pagination.swiper-pagination-bullets {
+    bottom: 8px !important;
+    display: flex; justify-content: center; gap: 8px;
   }
-  .reels-row::-webkit-scrollbar { height: 6px; }
-  .reels-row::-webkit-scrollbar-thumb { background: var(--line); border-radius: 999px; }
-  @media (min-width: 1100px) { .reels-row { grid-auto-columns: 1fr; grid-template-columns: repeat(5, 1fr); overflow: visible; } }
+  .reels-swiper-pagination .swiper-pagination-bullet {
+    width: 8px; height: 8px; background: var(--ink); opacity: .22;
+    transition: opacity .2s, transform .2s;
+  }
+  .reels-swiper-pagination .swiper-pagination-bullet-active {
+    opacity: .9; transform: scale(1.2);
+  }
+
+  /* Nav buttons */
+  .reels-nav {
+    position: absolute;
+    top: calc(50% - 22px);
+    transform: translateY(-50%);
+    z-index: 5;
+    width: 44px; height: 44px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.95);
+    border: 1px solid var(--line);
+    color: var(--ink);
+    display: grid; place-items: center;
+    cursor: pointer;
+    box-shadow: 0 12px 30px -14px rgba(24,26,28,0.35);
+    transition: transform .2s, background .2s, opacity .2s;
+  }
+  .reels-nav:hover { transform: translateY(-50%) scale(1.06); background: #fff; }
+  .reels-nav svg { width: 20px; height: 20px; }
+  .reels-nav-prev { left: 16px; }
+  .reels-nav-next { right: 16px; }
+  .reels-nav.swiper-button-disabled { opacity: 0; pointer-events: none; }
+  @media (max-width: 640px) {
+    .reels-nav { display: none; }
+  }
 
   .reel {
     position: relative;
