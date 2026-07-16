@@ -82,7 +82,11 @@
         <div class="post-grid">
           @foreach($related as $r)
             <a href="{{ route('blog.show', $r) }}" class="post-card">
-              <div class="visual" @if($r->featuredImageUrl()) style="background-image: url('{{ $r->featuredImageUrl() }}'); background-size: cover; background-position: center;"@endif></div>
+              <div class="visual">
+                @if($r->featuredImageUrl())
+                  <img src="{{ $r->featuredImageUrl() }}" alt="" class="cover" loading="lazy">
+                @endif
+              </div>
               @if($r->category)<span class="cat-pill">{{ $r->category->name }}</span>@endif
               <h3>{{ $r->title }}</h3>
               @if($r->excerpt)<p class="excerpt">{{ Str::limit($r->excerpt, 120) }}</p>@endif

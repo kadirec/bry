@@ -102,7 +102,10 @@
       @if($featured)
         <!-- Featured -->
         <article class="featured-post">
-          <a href="{{ route('blog.show', $featured) }}" class="visual" aria-label="Öne çıkan yazıyı oku" @if($featured->featuredImageUrl()) style="background-image: url('{{ $featured->featuredImageUrl() }}'); background-size: cover; background-position: center;"@endif>
+          <a href="{{ route('blog.show', $featured) }}" class="visual" aria-label="Öne çıkan yazıyı oku">
+            @if($featured->featuredImageUrl())
+              <img src="{{ $featured->featuredImageUrl() }}" alt="" class="cover" loading="lazy">
+            @endif
             <span class="feat-tag">Öne Çıkan</span>
           </a>
           <div class="body">
@@ -122,7 +125,11 @@
       <div class="post-grid">
         @forelse($posts as $post)
           <a href="{{ route('blog.show', $post) }}" class="post-card">
-            <div class="visual" @if($post->featuredImageUrl()) style="background-image: url('{{ $post->featuredImageUrl() }}'); background-size: cover; background-position: center;"@endif></div>
+            <div class="visual">
+              @if($post->featuredImageUrl())
+                <img src="{{ $post->featuredImageUrl() }}" alt="" class="cover" loading="lazy">
+              @endif
+            </div>
             @if($post->category)<span class="cat-pill">{{ $post->category->name }}</span>@endif
             <h3>{{ $post->title }}</h3>
             @if($post->excerpt)<p class="excerpt">{{ $post->excerpt }}</p>@endif
