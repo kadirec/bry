@@ -82,7 +82,7 @@
         <span class="eyebrow">Kendini Tanı · Ritmini Bul · Bilinçli Yaşa</span>
         <h1>Bilinçli<br/>Ritmik <em>Yaşam</em></h1>
         <p class="hero-lead">
-          BRY Metodu, insanı zihinsel, duygusal ve ruhsal boyutlarıyla bir bütün olarak tanımayı sağlayan, içeriği itibarıyla <strong>ilk ve tek yaşam metodudur</strong>. Kendi yapını derinlemesine keşfet, güçlü yönlerini ortaya çıkar, yaşamını daha bilinçli ve doğru kararlarla yönlendir.
+          BRY Metodu, insanı zihinsel, duygusal, ruhsal ve diğer boyutlarıyla bir bütün olarak tanımayı sağlayan, içeriği itibarıyla <strong>ilk ve tek yaşam metodudur</strong>. Kendi yapını derinlemesine keşfet, güçlü yönlerini ortaya çıkar, yaşamını daha bilinçli ve doğru kararlarla yönlendir.
         </p>
         <div class="hero-actions">
           <a href="{{ route('bry-metodu-ile-tanis') }}" class="btn btn-primary btn-arrow">BRY Metodunu Keşfet</a>
@@ -101,7 +101,6 @@
       <div class="section-head">
         <span class="eyebrow">Neler Kazanırsın</span>
         <h2 id="benefits-h">BRY Metodunun Faydaları</h2>
-        <p>BRY ile yola çıkanların yaşamında somut olarak değişen 6 alan.</p>
       </div>
       <div class="benefits-grid">
         <article class="benefit"><span class="benefit-num">01</span>
@@ -112,7 +111,7 @@
         <article class="benefit"><span class="benefit-num">02</span>
           <div class="benefit-icon"><img src="{{ asset('assets/icon-dogru-kararlar.png') }}" alt="" /></div>
           <h3>Doğru Kararlar Alabilme</h3>
-          <p>Zihnini en doğru şekilde kullanmayı öğrenir, yaşamının her alanında daha sağlıklı ve net kararlar alırsın.</p>
+          <p>Zihnini en doğru şekilde kullanmayı öğrenir, bu sayede yaşamının her alanında daha sağlıklı ve net kararlar alırsın.</p>
         </article>
         <article class="benefit"><span class="benefit-num">03</span>
           <div class="benefit-icon"><img src="{{ asset('assets/icon-dengeli-yasam.png') }}" alt="" /></div>
@@ -122,12 +121,12 @@
         <article class="benefit"><span class="benefit-num">04</span>
           <div class="benefit-icon"><img src="{{ asset('assets/icon-yasam-yolu.png') }}" alt="" /></div>
           <h3>Yaşam Yolunu Tespit Edebilme</h3>
-          <p>İsteklerin ve hedeflerin doğrultusunda bilinçli seçimler yapar, yaşam yolunu daha net görerek özgüvenle ilerlersin.</p>
+          <p>İsteklerin ve hedeflerin doğrultusunda bilinçli seçimler yapabilir, yaşam yolunu daha net görebilir ve bu yolda özgüvenle ilerleyebilirsin.</p>
         </article>
         <article class="benefit"><span class="benefit-num">05</span>
           <div class="benefit-icon"><img src="{{ asset('assets/icon-iletisim.png') }}" alt="" /></div>
           <h3>İletişim Yönetimi</h3>
-          <p>Kendinle ve çevrenle daha açık, hoşgörülü ve etkili iletişim kurar; düşüncelerini doğru ifade edebilirsin.</p>
+          <p>Kendinle ve çevrendekilerle daha açık, hoşgörülü ve etkili iletişim kurabilir, düşüncelerini doğru şekilde ifade edebilirsin.</p>
         </article>
         <article class="benefit"><span class="benefit-num">06</span>
           <div class="benefit-icon"><img src="{{ asset('assets/icon-aktif-yasam.png') }}" alt="" /></div>
@@ -161,7 +160,7 @@
         <blockquote class="founder-quote">
           <p>"Kendini gerçekten tanıdığında, sorunların yerini çözümler, korkuların yerini doğru kararlar alır.</p>
           <p>BRY Metodu ile, amaçların doğrultusunda fikirler üretebildiğin ve kararlarını bilinçle alabileceğin bu farkındalık yolculuğunda seninle buluşmayı heyecanla bekliyorum."</p>
-          <footer>— Tuncay Vural, BRY Metodu Kurucusu</footer>
+          <footer>— Bilinçli Ritmik Yaşam (BRY) Kurucusu, Eğitmeni ve Rehberi</footer>
         </blockquote>
       </div>
     </div>
@@ -177,10 +176,10 @@
       </div>
       <div class="journey-text">
         <span class="eyebrow">Peki, gerçekten iyi bir yaşam mümkün mü?</span>
-        <h2 id="journey-h">Cevap, BRY Metodu’nu anlamaktan geçiyor.</h2>
+        <h2 id="journey-h">Bu sorunun cevabını keşfetmenin ilk adımı, BRY Metodu’nu anlamaktan geçiyor.</h2>
         <p>22 yıldır 30.000’in üzerinde insana iyi bir yaşam sürmeleri için rehberlik eden Bilinçli Ritmik Yaşam (BRY) Metodu ile siz de tanışabilirsiniz.</p>
         <p>BRY Metodu’nun insan yaşamında nasıl bir fark yarattığını ve bu farkın sizde neleri değiştirebileceğini Tuncay Vural’ın anlattığı videoda keşfedin.</p>
-        <a href="{{ route('bry-metodu-ile-tanis') }}" class="btn btn-primary btn-arrow">BRY Methodunu Keşfet</a>
+        <a href="{{ route('bry-metodu-ile-tanis') }}" class="btn btn-primary btn-arrow">BRY Metodunu Keşfet</a>
       </div>
     </div>
   </section>
@@ -192,7 +191,7 @@
       <div class="section-head">
         <span class="eyebrow">BRY ile Dönüşen Hayatlar</span>
         <h2 id="reels-h">Yolculuklarını <em>kendi sesleriyle</em> anlatıyorlar.</h2>
-        <p>BRY Metodu ile hayatı yeniden şekillenen katılımcıların kısa video hikayeleri.</p>
+        <p>Her anlatım, yaşanmış bir sürecin gerçek bir ifadesidir ve BRY metodunun yaşam üzerindeki etkisini doğrudan yansıtır.</p>
       </div>
 
       <div class="reels-wrap">

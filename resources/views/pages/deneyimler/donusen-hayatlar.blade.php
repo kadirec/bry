@@ -82,7 +82,7 @@
       </nav>
       <span class="eyebrow">Deneyimler</span>
       <h1 id="donusen-title">Yolculuklarını <em>kendi sesleriyle</em> anlatıyorlar.</h1>
-      <p class="lead">Bilinçli Ritmik Yaşam Metodu ile hayatı yeniden şekillenen katılımcıların kısa video hikayeleri. Her birinin yolculuğu farklı, dönüşümü kendine özel.</p>
+      <p class="lead">Bilinçli Ritmik Yaşam Metodu ile kendi yaşamına farklı bir bakış açısı kazanan, kendini daha yakından tanıyan ve dönüşüm sürecini deneyimleyen kişilerin paylaşımlarını bu sayfada bulabilirsiniz. Her anlatım, yaşanmış bir sürecin gerçek bir ifadesidir ve BRY metodunun yaşam üzerindeki etkisini doğrudan yansıtır.</p>
     </div>
   </section>
 
