@@ -522,15 +522,33 @@
   @media (max-width: 900px) { .message-inner { grid-template-columns: 1fr; } .message-portrait { max-width: 360px; } }
 
   /* ============ REELS (Dönüşen Hayatlar — dik video) ============ */
-  .reels-wrap { position: relative; padding: 0 72px; }
-  .reels-swiper { overflow: hidden; padding: 8px 4px 44px; }
+  .reels-wrap { position: relative; }
+
+  /* Detay sayfası: yatay kaydırılabilir grid (Swiper kullanmayan görünüm) */
+  .reels-row {
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: minmax(240px, 1fr);
+    gap: 18px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    padding: 8px 4px 28px;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: thin;
+  }
+  .reels-row::-webkit-scrollbar { height: 6px; }
+  .reels-row::-webkit-scrollbar-thumb { background: var(--line); border-radius: 999px; }
+  @media (min-width: 1100px) { .reels-row { grid-auto-columns: 1fr; grid-template-columns: repeat(5, 1fr); overflow: visible; } }
+
+  .reels-swiper { overflow: hidden; padding: 8px 4px; }
   .reels-swiper .swiper-slide { height: auto; display: flex; }
   .reels-swiper .swiper-slide .reel { width: 100%; }
 
-  /* Pagination */
+  /* Pagination — kartların altında ayrı satır */
   .reels-swiper-pagination.swiper-pagination-bullets {
-    bottom: 8px !important;
+    position: static;
     display: flex; justify-content: center; gap: 8px;
+    margin-top: 20px;
   }
   .reels-swiper-pagination .swiper-pagination-bullet {
     width: 8px; height: 8px; background: var(--ink); opacity: .22;
@@ -538,32 +556,6 @@
   }
   .reels-swiper-pagination .swiper-pagination-bullet-active {
     opacity: .9; transform: scale(1.2);
-  }
-
-  /* Nav buttons */
-  .reels-nav {
-    position: absolute;
-    top: calc(50% - 22px);
-    transform: translateY(-50%);
-    z-index: 5;
-    width: 44px; height: 44px;
-    border-radius: 50%;
-    background: rgba(255,255,255,0.95);
-    border: 1px solid var(--line);
-    color: var(--ink);
-    display: grid; place-items: center;
-    cursor: pointer;
-    box-shadow: 0 12px 30px -14px rgba(24,26,28,0.35);
-    transition: transform .2s, background .2s, opacity .2s;
-  }
-  .reels-nav:hover { transform: translateY(-50%) scale(1.06); background: #fff; }
-  .reels-nav svg { width: 20px; height: 20px; }
-  .reels-nav-prev { left: 8px; }
-  .reels-nav-next { right: 8px; }
-  .reels-nav.swiper-button-disabled { opacity: 0; pointer-events: none; }
-  @media (max-width: 640px) {
-    .reels-wrap { padding: 0; }
-    .reels-nav { display: none; }
   }
 
   .reel {
@@ -622,28 +614,29 @@
   }
   .reel-play {
     position: absolute;
-    top: 50%; left: 50%;
-    transform: translate(-50%, -50%);
-    width: 62px; height: 62px;
+    bottom: 14px; right: 14px;
+    width: 46px; height: 46px;
     border-radius: 50%;
-    background: rgba(255,255,255,0.92);
-    backdrop-filter: blur(8px);
+    background: rgba(255,255,255,0.55);
+    backdrop-filter: blur(6px);
     display: grid; place-items: center;
     color: var(--ink);
-    opacity: .9;
-    transition: transform .25s, opacity .25s;
+    opacity: .85;
+    box-shadow: 0 6px 16px -10px rgba(0,0,0,0.35);
+    transition: transform .25s, opacity .25s, background .25s;
+    z-index: 2;
   }
-  .reel:hover .reel-play { transform: translate(-50%, -50%) scale(1.08); opacity: 1; }
+  .reel:hover .reel-play { transform: scale(1.08); opacity: 1; background: rgba(255,255,255,0.85); }
   .reel-play::after {
     content: "";
     width: 0; height: 0;
     border-style: solid;
-    border-width: 11px 0 11px 18px;
+    border-width: 8px 0 8px 13px;
     border-color: transparent transparent transparent currentColor;
-    margin-left: 4px;
+    margin-left: 3px;
   }
   .reel-meta {
-    position: absolute; left: 18px; right: 18px; bottom: 18px;
+    position: absolute; left: 18px; right: 74px; bottom: 18px;
     color: #fff;
   }
   .reel-meta .name { font-weight: 600; font-size: 15.5px; letter-spacing: -0.01em; }

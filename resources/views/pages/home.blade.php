@@ -225,14 +225,8 @@
               </div>
             @endforeach
           </div>
-          <div class="swiper-pagination reels-swiper-pagination"></div>
-          <button type="button" class="reels-nav reels-nav-prev" aria-label="Önceki hikaye">
-            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 18l-6-6 6-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </button>
-          <button type="button" class="reels-nav reels-nav-next" aria-label="Sonraki hikaye">
-            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </button>
         </div>
+        <div class="swiper-pagination reels-swiper-pagination"></div>
       </div>
 
       <div style="text-align:center; margin-top: 36px;">
@@ -360,6 +354,7 @@
 
     const reelsEl = document.querySelector('[data-reels-swiper]');
     if (reelsEl) {
+      const reelsWrap = reelsEl.closest('.reels-wrap') || reelsEl.parentElement;
       new Swiper(reelsEl, {
         slidesPerView: 1.2,
         spaceBetween: 14,
@@ -372,18 +367,14 @@
           pauseOnMouseEnter: true,
         },
         pagination: {
-          el: reelsEl.querySelector('.reels-swiper-pagination'),
+          el: reelsWrap.querySelector('.reels-swiper-pagination'),
           clickable: true,
-        },
-        navigation: {
-          nextEl: reelsEl.querySelector('.reels-nav-next'),
-          prevEl: reelsEl.querySelector('.reels-nav-prev'),
         },
         breakpoints: {
           520:  { slidesPerView: 2.5, spaceBetween: 16 },
           780:  { slidesPerView: 3.5, spaceBetween: 18 },
-          1024: { slidesPerView: 4.5, spaceBetween: 20 },
-          1280: { slidesPerView: 4.5, spaceBetween: 22 },
+          1024: { slidesPerView: 3.5, spaceBetween: 20 },
+          1280: { slidesPerView: 3.5, spaceBetween: 22 },
         },
       });
     }
