@@ -74,7 +74,7 @@
     <div class="container hero-grid">
       <div class="hero-portrait-wrap"> 
         <div class="hero-portrait">
-          <img src="{{ asset('assets/tuncay-portrait.jpg') }}" alt="Tuncay Vural — BRY Metodu Kurucusu" />
+          <img src="{{ asset('assets/images/tuncay_vural.png') }}" alt="Tuncay Vural — BRY Metodu Kurucusu" />
         </div>
       </div>
 
@@ -103,33 +103,33 @@
         <h2 id="benefits-h">BRY Metodunun Faydaları</h2>
       </div>
       <div class="benefits-grid">
-        <article class="benefit"><span class="benefit-num">01</span>
-          <div class="benefit-icon"><img src="{{ asset('assets/icon-kendini-tanima.png') }}" alt="" /></div>
+        <article class="benefit">
+          <div class="benefit-icon"><img src="{{ asset('assets/images/fayda_iconlar/kendini_tanima.png') }}" alt="" /></div>
           <h3>Kendini Tanıma</h3>
           <p>Kendini ilk kez 9 boyutta, bütünsel olarak tanır; sana özel karakter değerlerini ve yeteneklerini fark etmeye başlarsın.</p>
         </article>
-        <article class="benefit"><span class="benefit-num">02</span>
-          <div class="benefit-icon"><img src="{{ asset('assets/icon-dogru-kararlar.png') }}" alt="" /></div>
+        <article class="benefit">
+          <div class="benefit-icon"><img src="{{ asset('assets/images/fayda_iconlar/dogru_karar_alabilme.png') }}" alt="" /></div>
           <h3>Doğru Kararlar Alabilme</h3>
           <p>Zihnini en doğru şekilde kullanmayı öğrenir, bu sayede yaşamının her alanında daha sağlıklı ve net kararlar alırsın.</p>
         </article>
-        <article class="benefit"><span class="benefit-num">03</span>
-          <div class="benefit-icon"><img src="{{ asset('assets/icon-dengeli-yasam.png') }}" alt="" /></div>
+        <article class="benefit">
+          <div class="benefit-icon"><img src="{{ asset('assets/images/fayda_iconlar/dengeli_yasam.png') }}" alt="" /></div>
           <h3>Dengeli Yaşam</h3>
           <p>Sahip olduğun özellikleri tanıyarak iç çatışmalarından kurtulur, yaşamının her alanında denge kurmayı öğrenirsin.</p>
         </article>
-        <article class="benefit"><span class="benefit-num">04</span>
-          <div class="benefit-icon"><img src="{{ asset('assets/icon-yasam-yolu.png') }}" alt="" /></div>
+        <article class="benefit">
+          <div class="benefit-icon"><img src="{{ asset('assets/images/fayda_iconlar/yasam_yolunu_tespit_edebilme.png') }}" alt="" /></div>
           <h3>Yaşam Yolunu Tespit Edebilme</h3>
           <p>İsteklerin ve hedeflerin doğrultusunda bilinçli seçimler yapabilir, yaşam yolunu daha net görebilir ve bu yolda özgüvenle ilerleyebilirsin.</p>
         </article>
-        <article class="benefit"><span class="benefit-num">05</span>
-          <div class="benefit-icon"><img src="{{ asset('assets/icon-iletisim.png') }}" alt="" /></div>
+        <article class="benefit">
+          <div class="benefit-icon"><img src="{{ asset('assets/images/fayda_iconlar/iletisim_yonetimi.png') }}" alt="" /></div>
           <h3>İletişim Yönetimi</h3>
           <p>Kendinle ve çevrendekilerle daha açık, hoşgörülü ve etkili iletişim kurabilir, düşüncelerini doğru şekilde ifade edebilirsin.</p>
         </article>
-        <article class="benefit"><span class="benefit-num">06</span>
-          <div class="benefit-icon"><img src="{{ asset('assets/icon-aktif-yasam.png') }}" alt="" /></div>
+        <article class="benefit">
+          <div class="benefit-icon"><img src="{{ asset('assets/images/fayda_iconlar/aktif_yasam.png') }}" alt="" /></div>
           <h3>Aktif Yaşam</h3>
           <p>Kendine ait özellikleri fark eder, bunları bilinçli ve amaç odaklı kullanarak yaşamında aktif adımlar atmaya başlarsın.</p>
         </article>
@@ -145,7 +145,7 @@
       </div>
 
       <div class="home-video">
-        <video controls preload="metadata" playsinline>
+        <video controls preload="metadata" playsinline poster="{{ asset('assets/images/insanveyasam_video_kapak.png') }}">
           <source src="{{ asset('assets/home_video.mp4') }}" type="video/mp4">
           Tarayıcınız video etiketini desteklemiyor.
         </video>
@@ -169,7 +169,7 @@
    <section class="journey" id="video" data-screen-label="09 Tanıtım Videosu" aria-labelledby="journey-h">
     <div class="container journey-inner">
       <div class="journey-visual journey-video">
-        <video controls preload="metadata" playsinline poster="{{ asset('assets/tuncay-portrait.jpg') }}">
+        <video controls preload="metadata" playsinline poster="{{ asset('assets/images/bry_method_kapak.png') }}">
           <source src="{{ asset('assets/BRYMetoduyla_tanisin.mp4') }}" type="video/mp4">
           Tarayıcınız video etiketini desteklemiyor.
         </video>

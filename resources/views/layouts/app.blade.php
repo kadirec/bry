@@ -18,6 +18,9 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet" />
 
+<link rel="icon" type="image/png" href="{{ asset('assets/favicon.png') }}">
+<link rel="apple-touch-icon" href="{{ asset('assets/favicon.png') }}">
+
 <link rel="stylesheet" href="{{ asset('css/app.css') }}?v={{ @filemtime(public_path('css/app.css')) ?: '1' }}">
 
 @stack('head')

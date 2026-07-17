@@ -134,7 +134,7 @@
 
         <article class="contrib">
           <div class="contrib-head">
-            <span class="contrib-num" aria-hidden="true">i</span>
+            <span class="contrib-num" aria-hidden="true"><img src="{{ asset('assets/images/bry_nedir_ico/kendini_tanima_ve_ic_denge.png') }}" alt=""></span>
             <h3>Kendini Tanıma ve İç Denge</h3>
           </div>
           <ul>
@@ -145,7 +145,7 @@
 
         <article class="contrib">
           <div class="contrib-head">
-            <span class="contrib-num" aria-hidden="true">ii</span>
+            <span class="contrib-num" aria-hidden="true"><img src="{{ asset('assets/images/bry_nedir_ico/karar_alma_ve_yasam_yonetimi.png') }}" alt=""></span>
             <h3>Karar Alma ve Yaşam Yönetimi</h3>
           </div>
           <ul>
@@ -158,7 +158,7 @@
 
         <article class="contrib">
           <div class="contrib-head">
-            <span class="contrib-num" aria-hidden="true">iii</span>
+            <span class="contrib-num" aria-hidden="true"><img src="{{ asset('assets/images/bry_nedir_ico/iletisim_ve_iliskiler.png') }}" alt=""></span>
             <h3>İletişim ve İlişkiler</h3>
           </div>
           <ul>
@@ -170,7 +170,7 @@
 
         <article class="contrib">
           <div class="contrib-head">
-            <span class="contrib-num" aria-hidden="true">iv</span>
+            <span class="contrib-num" aria-hidden="true"><img src="{{ asset('assets/images/bry_nedir_ico/surdurulebilir_gelisim.png') }}" alt=""></span>
             <h3>Sürdürülebilir Gelişim</h3>
           </div>
           <ul>
@@ -191,7 +191,7 @@
       </div>
 
       <div class="video-frame video-frame-live">
-        <video controls preload="metadata" playsinline poster="{{ asset('assets/tuncay-portrait.jpg') }}">
+        <video controls preload="metadata" playsinline poster="{{ asset('assets/images/bry_method_kapak.png') }}">
           <source src="{{ asset('assets/BRYMetoduyla_tanisin.mp4') }}" type="video/mp4">
           Tarayıcınız video etiketini desteklemiyor.
         </video>

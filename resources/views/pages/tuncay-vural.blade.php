@@ -87,7 +87,7 @@
 
       <div class="bio-portrait-wrap">
         <div class="bio-portrait">
-          <img src="{{ asset('assets/tuncay-portrait.jpg') }}" alt="Tuncay Vural — BRY Metodu Kurucusu" />
+          <img src="{{ asset('assets/images/tuncay_vural_hakkinda.png') }}" alt="Tuncay Vural — BRY Metodu Kurucusu" />
         </div>
       </div>
 
@@ -163,7 +163,7 @@
     <div class="container">
       <div class="bio-split">
         <div class="bio-split-media">
-          <img src="{{ asset('assets/images/tuncay_vural/tuncay.jpg') }}" alt="Tuncay Vural" />
+          <img src="{{ asset('assets/images/stylegym_tuncayvural.png') }}" alt="Tuncay Vural — StyleGym" />
         </div>
         <div class="bio-split-content"> 
           <h2 id="spor-title">Herkes İçin <em>StyleGym</em></h2>

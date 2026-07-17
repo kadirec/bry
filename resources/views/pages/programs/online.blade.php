@@ -99,6 +99,7 @@
         <!-- 1: BRY Metodu Eğitimi (Yetişkinler) -->
         <article class="course-card">
           <div class="visual">
+            <img src="{{ asset('assets/images/online_akademi/beymethodu_akademi.png') }}" alt="BRY Metodu Eğitimi — Yetişkinler" class="cover">
             <span class="seal-first" aria-label="Dünyada İlk">
               <span class="seal-ring" aria-hidden="true">BİLİNÇLİ RİTMİK YAŞAM · BRY METODU · </span>
               <span class="seal-core">
@@ -120,6 +121,7 @@
         <!-- 2: Gerçek Ben Eğitimi -->
         <article class="course-card">
           <div class="visual">
+            <img src="{{ asset('assets/images/online_akademi/gercekben_akademi.png') }}" alt="BRY Metodu ile Gerçek Ben Eğitimi" class="cover">
             <span class="badge badge-live"><span class="dot" aria-hidden="true"></span>Yayında</span>
           </div>
           <div class="body">
@@ -134,6 +136,7 @@
         <!-- 3: BRY Metodu Eğitimi (Gençler) -->
         <article class="course-card is-soon">
           <div class="visual">
+            <img src="{{ asset('assets/images/online_akademi/brymethodu_gencler.png') }}" alt="BRY Metodu Eğitimi — Gençler" class="cover">
             <span class="badge">Yakında</span>
           </div>
           <div class="body">
@@ -159,10 +162,8 @@
       <div class="live-grid">
 
         <article class="live-card">
-          <div class="visual">
-            <span class="live-tag"><span class="dot" aria-hidden="true"></span>Canlı Yayın</span>
-          </div>
           <div class="body">
+            <span class="live-tag"><span class="dot" aria-hidden="true"></span>Canlı Yayın</span>
             <p class="quote">Ertelemek, karakter özelliğin <em>değil</em>; yönetebileceğin bir alışkanlıktır.</p>
             <p>BRY Metodu ile bu alışkanlığın nedenlerini fark edecek, nasıl kontrol altına alabileceğini öğreneceksin.</p>
             <a href="#" class="btn-arrow">Detaylar →</a>
@@ -170,10 +171,8 @@
         </article>
 
         <article class="live-card">
-          <div class="visual">
-            <span class="live-tag"><span class="dot" aria-hidden="true"></span>Canlı Yayın</span>
-          </div>
           <div class="body">
+            <span class="live-tag"><span class="dot" aria-hidden="true"></span>Canlı Yayın</span>
             <p class="quote">Özgüven eksikliği bir karakter özelliği <em>değil</em>; edinilmiş bir durumdur.</p>
             <p>Bu eğitimde, özgüveninin neden azaldığını fark edecek ve nasıl güçlendireceğini öğreneceksin.</p>
             <a href="#" class="btn-arrow">Detaylar →</a>
