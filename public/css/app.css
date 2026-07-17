@@ -199,7 +199,9 @@
   }
 
   /* ============ HERO ============ */
-  .hero { padding: 64px 0 96px; position: relative; overflow: hidden; }
+  .hero { padding: 56px 0 48px; position: relative; overflow: hidden; background: var(--cream); }
+  .benefits-section { padding-top: 64px; padding-bottom: 80px; }
+  .benefits-section .section-head { margin-bottom: 36px; }
   .hero-grid {
     display: grid;
     grid-template-columns: 0.95fr 1.05fr;
@@ -273,9 +275,10 @@
   .hero-meta-item .lbl { font-size: 12.5px; color: var(--ink-mute); letter-spacing: 0.04em; }
 
   @media (max-width: 900px) {
-    .hero { padding: 40px 0 60px; }
+    .hero { padding: 36px 0 40px; }
     .hero-grid { grid-template-columns: 1fr; gap: 40px; }
     .hero-portrait-wrap { max-width: 480px; margin: 0 auto; }
+    .benefits-section { padding-top: 44px; padding-bottom: 56px; }
   }
 
   /* ============ SECTION COMMONS ============ */
@@ -284,6 +287,7 @@
   .section-head .eyebrow { margin-bottom: 18px; }
   .section-head p { color: var(--ink-soft); font-size: 17.5px; margin-top: 16px; }
   .alt { background: var(--bg-soft); }
+  .hero-bg { background: var(--cream); }
   .ink-bg { background: var(--ink); color: var(--cream); }
   .ink-bg h2, .ink-bg h3 { color: var(--cream); }
   .ink-bg .eyebrow { color: var(--gold); }

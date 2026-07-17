@@ -96,7 +96,7 @@
  
 
   <!-- BENEFITS -->
-  <section data-screen-label="03 Faydalar" aria-labelledby="benefits-h">
+  <section class="alt benefits-section" data-screen-label="03 Faydalar" aria-labelledby="benefits-h">
     <div class="container">
       <div class="section-head">
         <span class="eyebrow">Neler Kazanırsın</span>
@@ -137,7 +137,7 @@
     </div>
   </section>
 
-    <section class="alt" data-screen-label="05 Eğitimler" aria-labelledby="programs-h">
+    <section class="hero-bg" data-screen-label="05 Eğitimler" aria-labelledby="programs-h">
     <div class="container">
       <div class="section-head">
         <span class="eyebrow">Yaşamları Dönüştürme Yolculuğunda 22 Yıl...</span>
