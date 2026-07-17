@@ -1103,8 +1103,8 @@
   @media (max-width: 900px) { .blog-grid { grid-template-columns: 1fr; } }
 
   /* Blog carousel (anasayfa) */
-  .blog-swiper-wrap { position: relative; padding: 0 64px; }
-  .blog-swiper { overflow: hidden; padding: 8px 4px 48px; }
+  .blog-swiper-wrap { position: relative; padding: 0 72px; }
+  .blog-swiper { overflow: hidden; padding: 8px 4px; }
   .blog-swiper .swiper-slide { height: auto; display: flex; }
   .blog-swiper .swiper-slide .post { width: 100%; }
   .blog-swiper .post h3 {
@@ -1124,11 +1124,33 @@
     min-height: calc(1.5em * 3);
     flex: none;
   }
-  .blog-nav-prev { left: 0; }
-  .blog-nav-next { right: 0; }
+
+  /* Nav buttons — carousel'in kenarında, kartların dışında */
+  .blog-nav {
+    position: absolute;
+    top: calc(50% - 22px);
+    z-index: 5;
+    width: 44px; height: 44px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.95);
+    border: 1px solid var(--line);
+    color: var(--ink);
+    display: grid; place-items: center;
+    cursor: pointer;
+    box-shadow: 0 12px 30px -14px rgba(24,26,28,0.35);
+    transition: transform .2s, background .2s, opacity .2s;
+  }
+  .blog-nav:hover { transform: scale(1.06); background: #fff; }
+  .blog-nav svg { width: 20px; height: 20px; }
+  .blog-nav-prev { left: 8px; }
+  .blog-nav-next { right: 8px; }
+  .blog-nav.swiper-button-disabled { opacity: 0; pointer-events: none; }
+
+  /* Pagination — kartların altında ayrı satır */
   .blog-swiper-pagination.swiper-pagination-bullets {
-    bottom: 8px !important;
+    position: static;
     display: flex; justify-content: center; gap: 8px;
+    margin-top: 20px;
   }
   .blog-swiper-pagination .swiper-pagination-bullet {
     width: 8px; height: 8px; background: var(--ink); opacity: .22;
@@ -1137,8 +1159,9 @@
   .blog-swiper-pagination .swiper-pagination-bullet-active {
     opacity: .9; transform: scale(1.2);
   }
-  @media (max-width: 900px) {
-    .blog-swiper-wrap { padding: 0 8px; }
+  @media (max-width: 640px) {
+    .blog-swiper-wrap { padding: 0; }
+    .blog-nav { display: none; }
   }
 
   /* ============ GALLERY ============ */

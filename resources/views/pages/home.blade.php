@@ -297,6 +297,12 @@
       @php $coverTints = ['', 'olive', 'plum']; @endphp
 
       <div class="blog-swiper-wrap">
+        <button type="button" class="blog-nav blog-nav-prev" aria-label="Önceki yazı">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 18l-6-6 6-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <button type="button" class="blog-nav blog-nav-next" aria-label="Sonraki yazı">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
         <div class="swiper blog-swiper" data-blog-swiper>
           <div class="swiper-wrapper">
             @foreach($homeLatestPosts as $i => $post)
@@ -325,14 +331,8 @@
               </div>
             @endforeach
           </div>
-          <div class="swiper-pagination blog-swiper-pagination"></div>
-          <button type="button" class="reels-nav reels-nav-prev blog-nav-prev" aria-label="Önceki yazı">
-            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 18l-6-6 6-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </button>
-          <button type="button" class="reels-nav reels-nav-next blog-nav-next" aria-label="Sonraki yazı">
-            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </button>
         </div>
+        <div class="swiper-pagination blog-swiper-pagination"></div>
       </div>
 
       <div style="text-align:center; margin-top: 44px;">
@@ -391,6 +391,7 @@
 
     const blogEl = document.querySelector('[data-blog-swiper]');
     if (blogEl) {
+      const blogWrap   = blogEl.closest('.blog-swiper-wrap') || blogEl.parentElement;
       const slideCount = blogEl.querySelectorAll('.swiper-slide').length;
       new Swiper(blogEl, {
         slidesPerView: 1.05,
@@ -403,12 +404,12 @@
           pauseOnMouseEnter: true,
         },
         pagination: {
-          el: blogEl.querySelector('.blog-swiper-pagination'),
+          el: blogWrap.querySelector('.blog-swiper-pagination'),
           clickable: true,
         },
         navigation: {
-          nextEl: blogEl.querySelector('.blog-nav-next'),
-          prevEl: blogEl.querySelector('.blog-nav-prev'),
+          nextEl: blogWrap.querySelector('.blog-nav-next'),
+          prevEl: blogWrap.querySelector('.blog-nav-prev'),
         },
         breakpoints: {
           640:  { slidesPerView: 2, spaceBetween: 20 },
