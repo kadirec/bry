@@ -522,7 +522,7 @@
   @media (max-width: 900px) { .message-inner { grid-template-columns: 1fr; } .message-portrait { max-width: 360px; } }
 
   /* ============ REELS (Dönüşen Hayatlar — dik video) ============ */
-  .reels-wrap { position: relative; padding: 0 8px; }
+  .reels-wrap { position: relative; padding: 0 72px; }
   .reels-swiper { overflow: hidden; padding: 8px 4px 44px; }
   .reels-swiper .swiper-slide { height: auto; display: flex; }
   .reels-swiper .swiper-slide .reel { width: 100%; }
@@ -558,10 +558,11 @@
   }
   .reels-nav:hover { transform: translateY(-50%) scale(1.06); background: #fff; }
   .reels-nav svg { width: 20px; height: 20px; }
-  .reels-nav-prev { left: 16px; }
-  .reels-nav-next { right: 16px; }
+  .reels-nav-prev { left: 8px; }
+  .reels-nav-next { right: 8px; }
   .reels-nav.swiper-button-disabled { opacity: 0; pointer-events: none; }
   @media (max-width: 640px) {
+    .reels-wrap { padding: 0; }
     .reels-nav { display: none; }
   }
 
