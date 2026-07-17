@@ -54,6 +54,7 @@
         <td>
           <strong>{{ $p->title }}</strong>
           @if($p->is_featured) <span style="display:inline-block; padding:2px 8px; background:var(--a-plum-soft); color:var(--a-plum-deep); border-radius:999px; font-size:11px; margin-left:4px;">⭐ Öne çıkan</span>@endif
+          @if($p->show_on_home) <span style="display:inline-block; padding:2px 8px; background:#E7F4EA; color:#1F5A2C; border-radius:999px; font-size:11px; margin-left:4px;">🏠 Vitrinde</span>@endif
           <br><span class="muted">/blog/{{ $p->slug }}</span>
         </td>
         <td>{{ $p->category?->name ?? '—' }}</td>

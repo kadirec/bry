@@ -101,6 +101,8 @@ class PostController extends Controller
             'author'           => ['required', 'string', 'max:120'],
             'reading_minutes'  => ['nullable', 'integer', 'min:1', 'max:300'],
             'is_featured'      => ['nullable', 'boolean'],
+            'show_on_home'     => ['nullable', 'boolean'],
+            'home_sort'        => ['nullable', 'integer', 'min:0', 'max:999'],
             'status'           => ['required', 'in:draft,published'],
             'published_at'     => ['nullable', 'date'],
             'meta_title'       => ['nullable', 'string', 'max:255'],
@@ -110,7 +112,9 @@ class PostController extends Controller
         ];
 
         $data = $request->validate($rules);
-        $data['is_featured'] = $request->boolean('is_featured');
+        $data['is_featured']  = $request->boolean('is_featured');
+        $data['show_on_home'] = $request->boolean('show_on_home');
+        $data['home_sort']    = (int) $request->input('home_sort', 0);
 
         // featured_image_file validation field'i fillable değil, ayır
         unset($data['featured_image_file']);

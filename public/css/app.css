@@ -1103,10 +1103,29 @@
   @media (max-width: 900px) { .blog-grid { grid-template-columns: 1fr; } }
 
   /* Blog carousel (anasayfa) */
-  .blog-swiper-wrap { position: relative; padding: 0 8px; }
+  .blog-swiper-wrap { position: relative; padding: 0 64px; }
   .blog-swiper { overflow: hidden; padding: 8px 4px 48px; }
   .blog-swiper .swiper-slide { height: auto; display: flex; }
   .blog-swiper .swiper-slide .post { width: 100%; }
+  .blog-swiper .post h3 {
+    font-size: 17px;
+    line-height: 1.32;
+    min-height: calc(1.32em * 2);
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  .blog-swiper .post p {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    min-height: calc(1.5em * 3);
+    flex: none;
+  }
+  .blog-nav-prev { left: 0; }
+  .blog-nav-next { right: 0; }
   .blog-swiper-pagination.swiper-pagination-bullets {
     bottom: 8px !important;
     display: flex; justify-content: center; gap: 8px;
@@ -1117,6 +1136,9 @@
   }
   .blog-swiper-pagination .swiper-pagination-bullet-active {
     opacity: .9; transform: scale(1.2);
+  }
+  @media (max-width: 900px) {
+    .blog-swiper-wrap { padding: 0 8px; }
   }
 
   /* ============ GALLERY ============ */

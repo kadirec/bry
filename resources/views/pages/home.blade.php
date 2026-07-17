@@ -318,8 +318,8 @@
                     @if($post->category && $post->reading_minutes)<span class="dot">·</span>@endif
                     @if($post->reading_minutes)<span>{{ $post->reading_minutes }} dk okuma</span>@endif
                   </div>
-                  <h3>{{ $post->title }}</h3>
-                  @if($post->excerpt)<p>{{ $post->excerpt }}</p>@endif
+                  <h3>{{ \Illuminate\Support\Str::limit($post->title, 60) }}</h3>
+                  @if($post->excerpt)<p>{{ \Illuminate\Support\Str::limit(strip_tags($post->excerpt), 160) }}</p>@endif
                   <div class="post-foot"><span>Yazıyı oku →</span></div>
                 </a>
               </div>

@@ -91,6 +91,17 @@
           <input id="is_featured" type="checkbox" name="is_featured" value="1" {{ old('is_featured', $post->is_featured) ? 'checked' : '' }}>
           <label for="is_featured" style="margin: 0; text-transform: none; letter-spacing: 0;">⭐ Öne çıkan yazı</label>
         </div>
+
+        <div class="adm-field" style="display: flex; align-items: center; gap: 8px;">
+          <input id="show_on_home" type="checkbox" name="show_on_home" value="1" {{ old('show_on_home', $post->show_on_home) ? 'checked' : '' }}>
+          <label for="show_on_home" style="margin: 0; text-transform: none; letter-spacing: 0;">🏠 Anasayfa vitrininde göster</label>
+        </div>
+
+        <div class="adm-field">
+          <label for="home_sort">Anasayfa sırası</label>
+          <input id="home_sort" type="number" name="home_sort" value="{{ old('home_sort', $post->home_sort ?? 0) }}" min="0" max="999">
+          <div class="hint">Küçük değer önce gösterilir. Boş bırakılırsa yayın tarihine göre sıralanır.</div>
+        </div>
       </div>
 
       <div class="adm-card">

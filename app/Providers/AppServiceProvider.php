@@ -53,13 +53,28 @@ class AppServiceProvider extends ServiceProvider
             }
         });
 
-        // Anasayfa blog carousel — son yayımlanmış yazılar
+        // Anasayfa blog carousel — panelden seçili yazılar; yoksa son 12
         View::composer('pages.home', function ($view) {
             try {
-                $view->with('homeLatestPosts', Schema::hasTable('posts')
+                if (! Schema::hasTable('posts')) {
+                    $view->with('homeLatestPosts', collect());
+                    return;
+                }
+
+                $hasHomeCols = Schema::hasColumn('posts', 'show_on_home');
+                $selected = $hasHomeCols
                     ? Post::published()->with('category')
-                        ->latest('published_at')->limit(9)->get()
-                    : collect());
+                        ->where('show_on_home', true)
+                        ->orderBy('home_sort')->latest('published_at')
+                        ->limit(12)->get()
+                    : collect();
+
+                $posts = $selected->isNotEmpty()
+                    ? $selected
+                    : Post::published()->with('category')
+                        ->latest('published_at')->limit(12)->get();
+
+                $view->with('homeLatestPosts', $posts);
             } catch (\Throwable $e) {
                 $view->with('homeLatestPosts', collect());
             }
