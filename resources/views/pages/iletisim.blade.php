@@ -79,7 +79,7 @@
         <span aria-current="page">İletişim</span>
       </nav>
       <span class="eyebrow">İletişim</span>
-      <h1 id="iletisim-title">Bizimle <em>İletişime</em> Geçin</h1>
+      <h1 id="iletisim-title">Bizimle İletişime Geçin</h1>
       <p class="lead">Sorularınız, görüşleriniz veya iş birliği talepleriniz için aşağıdaki formu doldurarak bizimle iletişime geçebilirsiniz.</p>
       <p class="lead">Sürecinize en uygun şekilde yön verebilmek için en kısa sürede dönüş sağlanacaktır.</p>
     </div>
@@ -123,12 +123,18 @@
             </div>
 
             <div class="form-field">
-              <label for="cf-subject">Konu</label>
-              <select id="cf-subject" name="subject">
-                @foreach(['Genel bilgi','Bireysel program hakkında','Aile programı hakkında','Yetişkinliğe hazırlık (14–18 yaş)','Kamp programı','Online akademi','Kurumsal program / teklif','Medya / iş birliği','Diğer'] as $opt)
-                  <option value="{{ $opt }}" {{ old('subject') === $opt ? 'selected' : '' }}>{{ $opt }}</option>
+              <span class="field-label">Konu</span>
+              <div class="subject-chips" role="radiogroup" aria-label="Konu seçimi">
+                @foreach(['Genel bilgi','Bireysel program hakkında','Aile programı hakkında','Yetişkinliğe hazırlık (14–18 yaş)','Kamp programı','Online akademi','Kurumsal program / teklif','Medya / iş birliği','Diğer'] as $i => $opt)
+                  <label class="subject-chip">
+                    <input type="radio" name="subject" value="{{ $opt }}" {{ old('subject', 'Genel bilgi') === $opt ? 'checked' : '' }}>
+                    <span class="subject-chip-box" aria-hidden="true">
+                      <svg viewBox="0 0 16 16"><path d="M3.5 8.5l3 3 6-7" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    </span>
+                    <span class="subject-chip-text">{{ $opt }}</span>
+                  </label>
                 @endforeach
-              </select>
+              </div>
             </div>
 
             <div class="form-field">

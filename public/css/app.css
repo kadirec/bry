@@ -3130,6 +3130,80 @@
     font-family: var(--sans);
     line-height: 1.55;
   }
+  .contact-form .field-label {
+    display: block;
+    font-family: var(--sans);
+    font-size: 11.5px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+    margin-bottom: 10px;
+    font-weight: 500;
+  }
+  .contact-form .subject-chips {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 10px;
+  }
+  .contact-form .subject-chip {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 14px;
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    background: var(--bg);
+    cursor: pointer;
+    transition: border-color .2s ease, background .2s ease, box-shadow .2s ease;
+    margin: 0;
+    text-transform: none;
+    letter-spacing: 0;
+    font-size: 14px;
+    color: var(--ink);
+    font-weight: 500;
+  }
+  .contact-form .subject-chip:hover {
+    border-color: var(--plum);
+    background: var(--cream);
+  }
+  .contact-form .subject-chip input[type="radio"] {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+  }
+  .contact-form .subject-chip-box {
+    flex: none;
+    width: 20px; height: 20px;
+    border: 1.5px solid var(--line);
+    border-radius: 6px;
+    background: #fff;
+    display: grid; place-items: center;
+    color: transparent;
+    transition: background .2s ease, border-color .2s ease, color .2s ease;
+  }
+  .contact-form .subject-chip-box svg {
+    width: 14px; height: 14px;
+  }
+  .contact-form .subject-chip-text { line-height: 1.3; }
+  .contact-form .subject-chip:has(input:checked) {
+    border-color: var(--plum);
+    background: var(--plum-soft, #F1E7F5);
+    box-shadow: 0 6px 18px -12px rgba(107, 45, 130, 0.55);
+  }
+  .contact-form .subject-chip:has(input:checked) .subject-chip-box {
+    background: var(--plum-deep, var(--plum));
+    border-color: var(--plum-deep, var(--plum));
+    color: #fff;
+  }
+  .contact-form .subject-chip:has(input:checked) .subject-chip-text {
+    color: var(--plum-deep, var(--plum));
+    font-weight: 600;
+  }
+  .contact-form .subject-chip input[type="radio"]:focus-visible + .subject-chip-box {
+    outline: 2px solid var(--plum);
+    outline-offset: 2px;
+  }
   .contact-form .submit-row {
     display: flex;
     align-items: center;
@@ -3608,6 +3682,11 @@
     letter-spacing: -0.015em;
     margin-bottom: 12px;
     transition: color .2s ease;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    min-height: calc(1.3em * 2);
   }
   .post-card:hover h3 { color: var(--plum-deep); }
   .post-card .excerpt {
@@ -3615,6 +3694,11 @@
     font-size: 14.5px;
     line-height: 1.6;
     margin-bottom: 14px;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    min-height: calc(1.6em * 3);
   }
   .post-card .meta {
     display: flex;
