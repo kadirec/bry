@@ -285,6 +285,7 @@
  
 
   <!-- BLOG TEASER -->
+  @if($homeLatestPosts->isNotEmpty())
   <section class="alt" data-screen-label="10 Blog" aria-labelledby="blog-h">
     <div class="container">
       <div class="section-head">
@@ -292,34 +293,54 @@
         <h2 id="blog-h">Düşünmeyi yavaşlatan yazılar.</h2>
         <p>Farkındalık, karar verme ve bütünsel yaşam üzerine son yazılar.</p>
       </div>
-      <div class="blog-grid">
-        <a class="post" href="{{ route('blog') }}">
-          <div class="post-cover"><span class="ph-text">[ blog görseli ]</span></div>
-          <div class="post-meta"><span>Farkındalık</span><span class="dot">·</span><span>5 dk okuma</span></div>
-          <h3>Kendini tanımak nereden başlar?</h3>
-          <p>BRY’nin 9 boyutlu yaklaşımına göre, ilk adım sandığından çok daha sade.</p>
-          <div class="post-foot"><span>Yazıyı oku →</span></div>
-        </a>
-        <a class="post" href="{{ route('blog') }}">
-          <div class="post-cover olive"><span class="ph-text">[ blog görseli ]</span></div>
-          <div class="post-meta"><span>Karar Verme</span><span class="dot">·</span><span>7 dk okuma</span></div>
-          <h3>Doğru karar ile bilinçli karar arasındaki fark</h3>
-          <p>Çoğu zaman doğru sandığımız kararlar, aslında alışkanlıklarımızın sesidir.</p>
-          <div class="post-foot"><span>Yazıyı oku →</span></div>
-        </a>
-        <a class="post" href="{{ route('blog') }}">
-          <div class="post-cover plum"><span class="ph-text">[ blog görseli ]</span></div>
-          <div class="post-meta"><span>İletişim</span><span class="dot">·</span><span>4 dk okuma</span></div>
-          <h3>Hoşgörüyü öğrenmek mi, hatırlamak mı?</h3>
-          <p>Kendine kurduğun iletişim, çevrenle kurduğun iletişimin tohumudur.</p>
-          <div class="post-foot"><span>Yazıyı oku →</span></div>
-        </a>
+
+      @php $coverTints = ['', 'olive', 'plum']; @endphp
+
+      <div class="blog-swiper-wrap">
+        <div class="swiper blog-swiper" data-blog-swiper>
+          <div class="swiper-wrapper">
+            @foreach($homeLatestPosts as $i => $post)
+              @php
+                $cover = $post->featuredImageUrl();
+                $tint  = $coverTints[$i % count($coverTints)];
+              @endphp
+              <div class="swiper-slide">
+                <a class="post" href="{{ route('blog.show', $post) }}">
+                  <div class="post-cover {{ $tint }}">
+                    @if($cover)
+                      <img src="{{ $cover }}" alt="" loading="lazy">
+                    @else
+                      <span class="ph-text">[ blog görseli ]</span>
+                    @endif
+                  </div>
+                  <div class="post-meta">
+                    @if($post->category)<span>{{ $post->category->name }}</span>@endif
+                    @if($post->category && $post->reading_minutes)<span class="dot">·</span>@endif
+                    @if($post->reading_minutes)<span>{{ $post->reading_minutes }} dk okuma</span>@endif
+                  </div>
+                  <h3>{{ $post->title }}</h3>
+                  @if($post->excerpt)<p>{{ $post->excerpt }}</p>@endif
+                  <div class="post-foot"><span>Yazıyı oku →</span></div>
+                </a>
+              </div>
+            @endforeach
+          </div>
+          <div class="swiper-pagination blog-swiper-pagination"></div>
+          <button type="button" class="reels-nav reels-nav-prev blog-nav-prev" aria-label="Önceki yazı">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 18l-6-6 6-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <button type="button" class="reels-nav reels-nav-next blog-nav-next" aria-label="Sonraki yazı">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+        </div>
       </div>
+
       <div style="text-align:center; margin-top: 44px;">
         <a href="{{ route('blog') }}" class="btn btn-ghost btn-arrow">Tüm Yazılar</a>
       </div>
     </div>
   </section>
+  @endif
 
  
 
@@ -336,34 +357,65 @@
 <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js" defer></script>
 <script defer>
   document.addEventListener('DOMContentLoaded', () => {
-    const el = document.querySelector('[data-reels-swiper]');
-    if (!el || typeof Swiper === 'undefined') return;
-    new Swiper(el, {
-      slidesPerView: 1.2,
-      spaceBetween: 14,
-      centeredSlides: false,
-      grabCursor: true,
-      loop: true,
-      autoplay: {
-        delay: 4000,
-        disableOnInteraction: false,
-        pauseOnMouseEnter: true,
-      },
-      pagination: {
-        el: el.querySelector('.reels-swiper-pagination'),
-        clickable: true,
-      },
-      navigation: {
-        nextEl: el.querySelector('.reels-nav-next'),
-        prevEl: el.querySelector('.reels-nav-prev'),
-      },
-      breakpoints: {
-        520:  { slidesPerView: 2.5, spaceBetween: 16 },
-        780:  { slidesPerView: 3.5, spaceBetween: 18 },
-        1024: { slidesPerView: 4.5, spaceBetween: 20 },
-        1280: { slidesPerView: 4.5, spaceBetween: 22 },
-      },
-    });
+    if (typeof Swiper === 'undefined') return;
+
+    const reelsEl = document.querySelector('[data-reels-swiper]');
+    if (reelsEl) {
+      new Swiper(reelsEl, {
+        slidesPerView: 1.2,
+        spaceBetween: 14,
+        centeredSlides: false,
+        grabCursor: true,
+        loop: true,
+        autoplay: {
+          delay: 4000,
+          disableOnInteraction: false,
+          pauseOnMouseEnter: true,
+        },
+        pagination: {
+          el: reelsEl.querySelector('.reels-swiper-pagination'),
+          clickable: true,
+        },
+        navigation: {
+          nextEl: reelsEl.querySelector('.reels-nav-next'),
+          prevEl: reelsEl.querySelector('.reels-nav-prev'),
+        },
+        breakpoints: {
+          520:  { slidesPerView: 2.5, spaceBetween: 16 },
+          780:  { slidesPerView: 3.5, spaceBetween: 18 },
+          1024: { slidesPerView: 4.5, spaceBetween: 20 },
+          1280: { slidesPerView: 4.5, spaceBetween: 22 },
+        },
+      });
+    }
+
+    const blogEl = document.querySelector('[data-blog-swiper]');
+    if (blogEl) {
+      const slideCount = blogEl.querySelectorAll('.swiper-slide').length;
+      new Swiper(blogEl, {
+        slidesPerView: 1.05,
+        spaceBetween: 16,
+        grabCursor: true,
+        loop: slideCount > 3,
+        autoplay: {
+          delay: 5500,
+          disableOnInteraction: false,
+          pauseOnMouseEnter: true,
+        },
+        pagination: {
+          el: blogEl.querySelector('.blog-swiper-pagination'),
+          clickable: true,
+        },
+        navigation: {
+          nextEl: blogEl.querySelector('.blog-nav-next'),
+          prevEl: blogEl.querySelector('.blog-nav-prev'),
+        },
+        breakpoints: {
+          640:  { slidesPerView: 2, spaceBetween: 20 },
+          960:  { slidesPerView: 3, spaceBetween: 22 },
+        },
+      });
+    }
   });
 </script>
 @endpush

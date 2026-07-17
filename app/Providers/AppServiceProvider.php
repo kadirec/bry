@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use App\Models\PageSeo;
+use App\Models\Post;
 use App\Models\ProductReview;
 use App\Models\Setting;
 use App\Models\Testimonial;
@@ -49,6 +50,18 @@ class AppServiceProvider extends ServiceProvider
                     : collect());
             } catch (\Throwable $e) {
                 $view->with('homeTestimonials', collect());
+            }
+        });
+
+        // Anasayfa blog carousel — son yayımlanmış yazılar
+        View::composer('pages.home', function ($view) {
+            try {
+                $view->with('homeLatestPosts', Schema::hasTable('posts')
+                    ? Post::published()->with('category')
+                        ->latest('published_at')->limit(9)->get()
+                    : collect());
+            } catch (\Throwable $e) {
+                $view->with('homeLatestPosts', collect());
             }
         });
 
