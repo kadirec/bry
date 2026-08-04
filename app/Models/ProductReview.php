@@ -30,7 +30,7 @@ class ProductReview extends Model
     public const PRODUCTS = [
         'genel'               => 'Genel Değerlendirme',
         'gercek-ben-egitimi'  => 'Gerçek Ben Eğitimi (Online Eğitim)',
-        'bry-methodu-egitimi' => 'BRY Methodu Eğitimi (Online Eğitim)',
+        'bry-methodu-egitimi' => 'BRY Metodu Eğitimi (Online Eğitim)',
     ];
 
     public function productLabel(): string
