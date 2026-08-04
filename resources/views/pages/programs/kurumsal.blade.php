@@ -227,7 +227,7 @@
     <div class="container cta-inner">
       <div>
         <span class="eyebrow" style="color: var(--gold);">Kurumunuza Özel</span>
-        <h2 id="cta-kur-title">Ekibiniz İçin <em>Program</em> Tasarlayalım</h2>
+        <h2 id="cta-kur-title">Ekibiniz İçin Program Tasarlayalım</h2>
         <p>BRY Metodu'nu kurumunuza entegre etmek için ekibinizin ihtiyaçlarına özel bir program planlayalım.</p>
       </div>
       @if(session('lead_status'))

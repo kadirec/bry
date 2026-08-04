@@ -113,34 +113,6 @@
     </div>
   </section>
 
-  <!-- STATS BAND -->
-  <section class="stats-band" aria-labelledby="stats-title">
-    <div class="container">
-      <div class="section-head" style="margin-bottom: 50px;">
-        <span class="eyebrow">Rakamlarla</span>
-        <h2 id="stats-title">22 Yıllık <em>Birikim</em></h2>
-      </div>
-      <div class="stats-row">
-        <div class="stat">
-          <span class="num">22<span style="color: var(--ink-mute); font-size: 0.5em;">+</span></span>
-          <span class="lbl">Yıllık Deneyim</span>
-        </div>
-        <div class="stat">
-          <span class="num">20<span style="color: var(--ink-mute); font-size: 0.5em;">+</span></span>
-          <span class="lbl">Kurumsal Ortak</span>
-        </div>
-        <div class="stat">
-          <span class="num">1000<span style="color: var(--ink-mute); font-size: 0.5em;">+</span></span>
-          <span class="lbl">Eğitim Saati</span>
-        </div>
-        <div class="stat">
-          <span class="num">5000<span style="color: var(--ink-mute); font-size: 0.5em;">+</span></span>
-          <span class="lbl">Katılımcı</span>
-        </div>
-      </div>
-    </div>
-  </section>
-
   <!-- TEMSILI ALINTI -->
   <section style="padding: 90px 0;">
     <div class="container">

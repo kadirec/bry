@@ -31,7 +31,7 @@
   <div class="container cta-inner">
     <div>
       <span class="eyebrow" style="color:#FFE7B6;">Şimdi Tanışalım</span>
-      <h2 id="contact-cta-h">Bizimle <em>İletişime</em> Geçin</h2>
+      <h2 id="contact-cta-h">Bizimle İletişime Geçin</h2>
       <p>Sorularınız, görüşleriniz veya iş birliği talepleriniz için aşağıdaki formu doldurun. Sürecinize en uygun şekilde yön verebilmek için en kısa sürede dönüş sağlanacaktır.</p>
     </div>
 

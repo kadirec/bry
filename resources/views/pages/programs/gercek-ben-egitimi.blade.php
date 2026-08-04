@@ -115,43 +115,37 @@
       <div class="benefits-grid">
 
         <article class="benefit">
-          <span class="benefit-num" aria-hidden="true">i</span>
-          <div class="benefit-icon" aria-hidden="true">✦</div>
+          <div class="benefit-icon" aria-hidden="true">◎</div>
           <h3>Gerçek Ben Nedir?</h3>
           <p>Kendinle ilgili fark etmediğin yönlerini tanıyacak, gerçek değerlerini ise "Evet, ben buyum" diyerek içtenlikle tespit edebileceksin.</p>
         </article>
 
         <article class="benefit">
-          <span class="benefit-num" aria-hidden="true">ii</span>
-          <div class="benefit-icon" aria-hidden="true">↗</div>
+          <div class="benefit-icon" aria-hidden="true">➜</div>
           <h3>Gerçek Ben Olmak İçin Ne Yapmalı?</h3>
           <p>Kendinle bağlantı kurmak ve içsel yolculuğunu başlatmak için hangi adımları atman gerektiğini göreceksin.</p>
         </article>
 
         <article class="benefit">
-          <span class="benefit-num" aria-hidden="true">iii</span>
-          <div class="benefit-icon" aria-hidden="true">◉</div>
+          <div class="benefit-icon" aria-hidden="true">⚙</div>
           <h3>Zihnin Nasıl Çalışıyor?</h3>
           <p>Zihnin çalışma sistemini ve zihnini etkili olarak yaşam boyu nasıl kullanabileceğini öğreneceksin.</p>
         </article>
 
         <article class="benefit">
-          <span class="benefit-num" aria-hidden="true">iv</span>
-          <div class="benefit-icon" aria-hidden="true">◆</div>
+          <div class="benefit-icon" aria-hidden="true">♥</div>
           <h3>Karakter Değerleri ve Kişilik</h3>
           <p>Kişiliğinin şekillenmesinde hangi değerlerin etkili olduğunu anlayacaksın.</p>
         </article>
 
         <article class="benefit">
-          <span class="benefit-num" aria-hidden="true">v</span>
           <div class="benefit-icon" aria-hidden="true">▲</div>
           <h3>Karakter Değerlerine Uyumlu Kişilik Gelişimi</h3>
           <p>Sana ait olan değerlere göre kişiliğini nasıl geliştirebileceğini öğreneceksin.</p>
         </article>
 
         <article class="benefit">
-          <span class="benefit-num" aria-hidden="true">vi</span>
-          <div class="benefit-icon" aria-hidden="true">✓</div>
+          <div class="benefit-icon" aria-hidden="true">✿</div>
           <h3>Gerçek Ben Olarak Yaşam</h3>
           <p>Kendinle uyumlu bir yaşam kurmanın ne anlama geldiğini ve bunu hayatına nasıl katabileceğini öğreneceksin.</p>
         </article>
@@ -315,7 +309,7 @@
 
           <p style="font-size: 14.5px; color: rgba(252,250,245,0.92); margin: 0 0 24px;">Eğitime katılmak için hazırsan, şimdi başlayabilirsin.</p>
 
-          <a href="#" target="_blank" rel="noopener" class="btn-arrow" style="background: var(--gold); color: var(--ink); width: 100%; justify-content: center; padding: 16px 26px; font-size: 15px;">Gerçek Sen'le Tanış</a>
+          <a href="https://www.paytr.com/link/LJTqZ5c" target="_blank" rel="noopener" class="btn-arrow" style="background: var(--gold); color: var(--ink); width: 100%; justify-content: center; padding: 16px 26px; font-size: 15px;">Gerçek Sen'le Tanış</a>
         </aside>
 
       </div>

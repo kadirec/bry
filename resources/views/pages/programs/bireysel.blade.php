@@ -139,7 +139,7 @@
         <article class="program-card">
           <span class="num">02</span>
           <div class="program-visual">
-            <img src="{{ asset('assets/images/yetiskinlige_hazirlik.png') }}" alt="BRY Yetişkinliğe Hazırlık" loading="lazy">
+            <img src="{{ asset('assets/images/yetiskinlige_hazirlik.jpg') }}" alt="BRY Yetişkinliğe Hazırlık" loading="lazy">
           </div>
           <div class="program-main">
             <div class="program-head">

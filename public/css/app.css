@@ -1245,6 +1245,9 @@
   .news-form textarea { resize: vertical; min-height: 120px; line-height: 1.5; }
   .news-form input::placeholder, .news-form textarea::placeholder { color: rgba(255,255,255,0.5); }
   .news-form input:focus, .news-form select:focus, .news-form textarea:focus { outline: 2px solid var(--gold); outline-offset: 1px; }
+  /* Windows/Chromium'da native <select> dropdown açıldığında option'lar body renginden değil parent'tan renk alıyor;
+     color:#fff olduğu için beyaz zeminde beyaz yazı görünmez oluyor. Options için okunabilir renk zorla. */
+  .news-form select option { color: #14191A; background: #fff; }
   .news-form button {
     background: var(--cream);
     color: var(--plum-deep);
