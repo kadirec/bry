@@ -223,3 +223,27 @@
     touchStartX = null;
   });
 })();
+
+/* ─── TR telefon maskesi — tüm input[type="tel"] için 0XXX XXX XX XX formatı ─── */
+(function () {
+  function formatTR(v) {
+    v = v.replace(/\D/g, '').slice(0, 11);
+    if (v.length && v[0] !== '0') v = '0' + v.slice(0, 10);
+    var out = v.slice(0, 4);
+    if (v.length > 4) out += ' ' + v.slice(4, 7);
+    if (v.length > 7) out += ' ' + v.slice(7, 9);
+    if (v.length > 9) out += ' ' + v.slice(9, 11);
+    return out;
+  }
+  document.querySelectorAll('input[type="tel"]').forEach(function (inp) {
+    inp.setAttribute('inputmode', 'tel');
+    inp.setAttribute('maxlength', '14');
+    if (!inp.placeholder || inp.placeholder === 'Telefon' || /05XX/i.test(inp.placeholder)) {
+      inp.placeholder = '0555 123 45 67';
+    }
+    var apply = function () { inp.value = formatTR(inp.value); };
+    if (inp.value) apply();
+    inp.addEventListener('input', apply);
+    inp.addEventListener('blur',  apply);
+  });
+})();

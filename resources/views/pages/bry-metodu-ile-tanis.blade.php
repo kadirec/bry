@@ -47,11 +47,11 @@
 
   <!-- PDF DOWNLOAD -->
   <section class="tanis-pdf" aria-labelledby="pdf-title">
-    <div class="tanis-pdf-band">
+    <a href="#bilincinle-tanis-form" class="tanis-pdf-band" aria-labelledby="pdf-title">
       <div class="container">
         <h2 id="pdf-title"><em>"Bilincinle Tanış"</em> Dosyasını Ücretsiz Alın</h2>
       </div>
-    </div>
+    </a>
 
     <div class="container">
       <div class="tanis-pdf-body">
@@ -60,10 +60,10 @@
         <p><strong>Bu kısa ama etkili dosyada, bilincinizin nasıl çalıştığını, sizi hedeflerinize ulaştıran ya da alıkoyan mekanizmayı tanıyacak ve günlük yaşamınızda hemen uygulayabileceğiniz farkındalık egzersizleri bulacaksınız.</strong></p>
 
         <div class="tanis-pdf-inner" id="bilincinle-tanis-form">
-          <p class="pdf-sub-title"><em>"Bilincinle Tanış" Dosyasını Ücretsiz Alın</em></p>
-          <p class="pdf-sub"><em>Aşağıya adınızı ve e-posta adresinizi yazın.<br/>
+          <p class="pdf-sub-title">"Bilincinle Tanış" Dosyasını Ücretsiz Alın</p>
+          <p class="pdf-sub">Aşağıya adınızı ve e-posta adresinizi yazın.<br/>
             Dosyanız birkaç dakika içinde e-posta kutunuza ulaşacak.<br/>
-            BRY metodunu daha yakından tanımaya bugünden başlayın.</em></p>
+            BRY metodunu daha yakından tanımaya bugünden başlayın.</p>
 
           @if(session('contact_status'))
             <div style="background:#E7F4EA; color:#1F5A2C; padding:16px 18px; border-radius:10px; text-align:left; margin-top:12px;">
@@ -78,7 +78,7 @@
 
             <div class="pdf-form-row">
               <input type="text" name="name" placeholder="Ad Soyad" aria-label="Ad Soyad" value="{{ old('name') }}" required />
-              <input type="tel" name="phone" placeholder="Telefon" aria-label="Telefon" value="{{ old('phone') }}" inputmode="tel" pattern="[0-9 +()\-]{7,}" required />
+              <input type="tel" name="phone" placeholder="0555 123 45 67" aria-label="Telefon" value="{{ old('phone') }}" inputmode="tel" maxlength="14" pattern="0[0-9]{3} [0-9]{3} [0-9]{2} [0-9]{2}" required />
             </div>
             <input type="email" name="email" placeholder="E-posta Adresiniz" aria-label="E-posta adresiniz" value="{{ old('email') }}" required />
             <label class="pdf-kvkk">
@@ -100,7 +100,7 @@
               </div>
             @endif
 
-            <button type="submit" class="btn-arrow">Formu Gönder</button>
+            <button type="submit" class="btn-arrow">Dijital PDF Al</button>
           </form>
           @endif
         </div>

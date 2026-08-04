@@ -4069,11 +4069,15 @@
   /* PDF section */
   .tanis-pdf { padding: 0 0 110px; }
   .tanis-pdf-band {
+    display: block;
     background: #2A2A2C;
     color: #fff;
     padding: 28px 0;
     margin-bottom: 56px;
+    text-decoration: none;
+    transition: background 0.2s;
   }
+  a.tanis-pdf-band:hover { background: #1F1F21; }
   .tanis-pdf-band h2 {
     color: #fff;
     text-align: center;
@@ -4108,19 +4112,16 @@
     text-align: center;
   }
   .pdf-sub-title {
-    font-family: var(--serif);
-    font-style: italic;
     font-size: 20px;
+    font-weight: 600;
     color: var(--ink);
-    margin-bottom: 18px;
+    margin-bottom: 14px;
   }
   .pdf-sub {
-    font-family: var(--serif);
-    font-style: italic;
-    font-size: 17px;
-    line-height: 1.6;
+    font-size: 16px;
+    line-height: 1.65;
     color: var(--ink-soft);
-    margin-bottom: 30px;
+    margin-bottom: 28px;
   }
 
   .pdf-form {
