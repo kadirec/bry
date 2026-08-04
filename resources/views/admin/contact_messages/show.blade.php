@@ -94,6 +94,56 @@
   </div>
 
   <div>
+    {{-- Mail Durumu --}}
+    <div class="adm-card">
+      <h2>Mail Durumu</h2>
+      @php
+        $mailStyles = [
+          'sent'    => ['bg' => '#E7F4EA', 'fg' => '#1F5A2C', 'icon' => '✓'],
+          'failed'  => ['bg' => '#FBE8E8', 'fg' => '#7E1F1F', 'icon' => '⚠'],
+          'pending' => ['bg' => '#F1ECDD', 'fg' => '#7E5C13', 'icon' => '⏳'],
+          'skipped' => ['bg' => '#ECECEC', 'fg' => '#666',    'icon' => '—'],
+        ];
+        $ms = $mailStyles[$message->mail_status] ?? $mailStyles['pending'];
+      @endphp
+      <div style="margin-bottom:10px;">
+        <span style="display:inline-block; padding:4px 12px; background:{{ $ms['bg'] }}; color:{{ $ms['fg'] }}; border-radius:999px; font-size:13px;">
+          {{ $ms['icon'] }} {{ $message->mailStatusLabel() }}
+        </span>
+      </div>
+      <p class="sub" style="margin:0 0 4px;">Gönderim: <strong>{{ $message->mail_sent_at ? $message->mail_sent_at->format('d.m.Y H:i') : '—' }}</strong></p>
+      <p class="sub" style="margin:0 0 4px;">Deneme sayısı: <strong>{{ $message->mail_attempts }}</strong></p>
+      @if($message->mail_last_error)
+        <div style="background:#FBE8E8; color:#7E1F1F; padding:8px 10px; border-radius:6px; font-size:12px; margin-top:8px; word-break:break-word;">
+          <strong>Son hata:</strong> {{ $message->mail_last_error }}
+        </div>
+      @endif
+
+      <form action="{{ route('admin.contact-messages.resend', $message) }}" method="POST" style="margin-top:12px;" onsubmit="return confirm('Maili tekrar gönderelim mi?');">
+        @csrf
+        <button class="adm-btn adm-btn--sm" type="submit">
+          @if($message->mail_status === 'sent') Tekrar Gönder @else Şimdi Gönder @endif
+        </button>
+      </form>
+    </div>
+
+    {{-- PDF İndirme (yalnızca PDF talebi ise) --}}
+    @if($message->isPdfRequest())
+      <div class="adm-card">
+        <h2>PDF İndirme</h2>
+        <p class="sub" style="margin:0 0 4px;">Toplam indirme: <strong>{{ $message->pdf_download_count }}</strong></p>
+        <p class="sub" style="margin:0 0 4px;">İlk indirme: <strong>{{ $message->pdf_first_downloaded_at ? $message->pdf_first_downloaded_at->format('d.m.Y H:i') : '—' }}</strong></p>
+        <p class="sub" style="margin:0 0 4px;">Son indirme: <strong>{{ $message->pdf_last_downloaded_at ? $message->pdf_last_downloaded_at->format('d.m.Y H:i') : '—' }}</strong></p>
+        @if($message->pdf_token)
+          <div style="margin-top:10px;">
+            <a href="{{ route('pdf.download', $message->pdf_token) }}" target="_blank" rel="noopener" class="adm-btn adm-btn--ghost adm-btn--sm">Tracking linkini aç</a>
+          </div>
+        @else
+          <p class="sub" style="margin-top:8px; color:#9A6D18;">Bu kayıt için pdf_token yok (yeni sistemden önce oluşturulmuş). Tekrar gönderdiğinde de raw Drive linki gidecektir.</p>
+        @endif
+      </div>
+    @endif
+
     <div class="adm-card">
       <h2>Teknik Bilgi</h2>
       <p class="sub" style="margin: 0 0 4px;">IP: {{ $message->ip ?: '—' }}</p>

@@ -23,9 +23,39 @@
   <div class="adm-flash" style="background:#E7F4EA; color:#1F5A2C; padding:10px 14px; border-radius:8px; margin-bottom:14px;">{{ session('status') }}</div>
 @endif
 
+{{-- "Bilincinle Tanış" PDF raporlaması --}}
+@if(!empty($pdfStats) && $pdfStats['total'] > 0)
+  <div class="adm-card" style="margin-bottom: 16px; padding: 14px 18px;">
+    <div style="display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:12px;">
+      <div>
+        <div style="font-size:12px; letter-spacing:0.12em; text-transform:uppercase; color:var(--a-ink-mute); margin-bottom:4px;">
+          "Bilincinle Tanış" PDF Talepleri
+        </div>
+        <div style="display:flex; gap:22px; flex-wrap:wrap; font-size:14px;">
+          <span><strong>{{ $pdfStats['total'] }}</strong> toplam istek</span>
+          <span style="color:#1F5A2C;"><strong>{{ $pdfStats['sent'] }}</strong> gönderildi</span>
+          @if($pdfStats['failed'] > 0)
+            <span style="color:#7E1F1F;"><strong>{{ $pdfStats['failed'] }}</strong> başarısız</span>
+          @endif
+          @if($pdfStats['pending'] > 0)
+            <span style="color:#7E5C13;"><strong>{{ $pdfStats['pending'] }}</strong> bekliyor</span>
+          @endif
+          <span>·</span>
+          <span><strong>{{ $pdfStats['downloaded'] }}</strong> kişi indirdi</span>
+          <span><strong>{{ $pdfStats['downloads'] }}</strong> toplam indirme</span>
+        </div>
+      </div>
+      <a href="{{ route('admin.contact-messages.index', ['type' => 'pdf']) }}"
+         class="adm-btn adm-btn--{{ ($activeType ?? '') === 'pdf' ? '' : 'ghost' }} adm-btn--sm">
+        Sadece PDF Talepleri
+      </a>
+    </div>
+  </div>
+@endif
+
 <div style="display: flex; gap: 8px; margin-bottom: 16px; flex-wrap: wrap;">
   <a href="{{ route('admin.contact-messages.index') }}"
-     class="adm-btn adm-btn--{{ empty($activeStatus) ? '' : 'ghost' }} adm-btn--sm">
+     class="adm-btn adm-btn--{{ empty($activeStatus) && empty($activeType) ? '' : 'ghost' }} adm-btn--sm">
     Tümü ({{ collect($counts)->sum() }})
   </a>
   @foreach($statuses as $key => $label)
@@ -42,9 +72,9 @@
       <th>Tarih</th>
       <th>Ad Soyad</th>
       <th>İletişim</th>
-      <th>Konu</th>
-      <th>Geldiği Sayfa</th>
-      <th>İzinler</th>
+      <th>Konu / Kaynak</th>
+      <th>Mail</th>
+      <th>PDF İndirme</th>
       <th>Durum</th>
       <th class="actions">Eylem</th>
     </tr>
@@ -58,24 +88,43 @@
           <div><a href="mailto:{{ $msg->email }}">{{ $msg->email }}</a></div>
           <div><a href="tel:{{ $msg->phone }}">{{ $msg->phone }}</a></div>
         </td>
-        <td>{{ $msg->subject ?? '—' }}</td>
-        <td>
-          @if($msg->source_url)
-            <a href="{{ $msg->source_url }}" target="_blank" rel="noopener" title="{{ $msg->source_url }}" style="font-size:13px;">{{ $msg->sourceDisplay() }}</a>
-          @else
-            <span class="muted">—</span>
+        <td style="max-width:260px;">
+          <div>{{ $msg->subject ?? '—' }}</div>
+          @if($msg->source_url || $msg->source_label)
+            <div style="font-size:12px; margin-top:3px;">
+              <a href="{{ $msg->source_url ?: '#' }}" target="_blank" rel="noopener" style="color:var(--a-ink-mute);">{{ $msg->sourceDisplay() }}</a>
+            </div>
           @endif
         </td>
         <td style="white-space: nowrap;">
-          @if($msg->consent_email)
-            <span title="E-posta iznini verdi" style="display:inline-block; background:#E7F4EA; color:#1F5A2C; border-radius:999px; padding:2px 9px; font-size:11.5px; margin-right:3px;">✉ E-posta</span>
-          @else
-            <span title="E-posta izni yok" style="display:inline-block; background:#F1F1F1; color:#9A9A9A; border-radius:999px; padding:2px 9px; font-size:11.5px; margin-right:3px; text-decoration:line-through;">✉ E-posta</span>
+          @php
+            $mailStyles = [
+              'sent'    => ['bg' => '#E7F4EA', 'fg' => '#1F5A2C', 'icon' => '✓'],
+              'failed'  => ['bg' => '#FBE8E8', 'fg' => '#7E1F1F', 'icon' => '⚠'],
+              'pending' => ['bg' => '#F1ECDD', 'fg' => '#7E5C13', 'icon' => '⏳'],
+              'skipped' => ['bg' => '#ECECEC', 'fg' => '#666',    'icon' => '—'],
+            ];
+            $ms = $mailStyles[$msg->mail_status] ?? $mailStyles['pending'];
+          @endphp
+          <span title="{{ $msg->mail_last_error }}" style="display:inline-block; padding:3px 9px; background:{{ $ms['bg'] }}; color:{{ $ms['fg'] }}; border-radius:999px; font-size:11.5px;">
+            {{ $ms['icon'] }} {{ $msg->mailStatusLabel() }}
+          </span>
+          @if($msg->mail_sent_at)
+            <div style="font-size:11px; color:var(--a-ink-mute); margin-top:2px;">{{ $msg->mail_sent_at->format('d.m H:i') }}</div>
           @endif
-          @if($msg->consent_sms)
-            <span title="SMS iznini verdi" style="display:inline-block; background:#E7F4EA; color:#1F5A2C; border-radius:999px; padding:2px 9px; font-size:11.5px;">📱 SMS</span>
+        </td>
+        <td style="white-space: nowrap;">
+          @if($msg->isPdfRequest())
+            @if($msg->pdf_download_count > 0)
+              <strong style="color:#1F5A2C;">{{ $msg->pdf_download_count }}×</strong>
+              <div style="font-size:11px; color:var(--a-ink-mute); margin-top:2px;">
+                {{ optional($msg->pdf_last_downloaded_at)->format('d.m H:i') }}
+              </div>
+            @else
+              <span class="muted">henüz indirilmedi</span>
+            @endif
           @else
-            <span title="SMS izni yok" style="display:inline-block; background:#F1F1F1; color:#9A9A9A; border-radius:999px; padding:2px 9px; font-size:11.5px; text-decoration:line-through;">📱 SMS</span>
+            <span class="muted">—</span>
           @endif
         </td>
         <td>

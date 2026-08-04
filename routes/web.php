@@ -46,6 +46,11 @@ Route::post('/kurumsal-teklif', [\App\Http\Controllers\CorporateLeadController::
 Route::post('/iletisim-gonder', [\App\Http\Controllers\ContactMessageController::class, 'store'])
     ->name('contact-messages.store');
 
+// "Bilincinle Tanış" PDF — tokenlı indirme (indirme sayısını admin panelde raporlamak için)
+Route::get('/pdf/{token}', [\App\Http\Controllers\ContactMessageController::class, 'pdfDownload'])
+    ->where('token', '[A-Za-z0-9]{20,}')
+    ->name('pdf.download');
+
 // Eğitim değerlendirmeleri (public POST)
 Route::post('/degerlendirme-gonder', [\App\Http\Controllers\ProductReviewController::class, 'store'])
     ->name('product-reviews.store');

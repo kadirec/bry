@@ -76,9 +76,10 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::delete('corporate-leads/{corporateLead}',  [CorporateLeadController::class, 'destroy'])->name('corporate-leads.destroy');
 
         // İletişim Formları
-        Route::get('contact-messages',                       [\App\Http\Controllers\Admin\ContactMessageController::class, 'index'])->name('contact-messages.index');
-        Route::get('contact-messages/{contactMessage}',      [\App\Http\Controllers\Admin\ContactMessageController::class, 'show'])->name('contact-messages.show');
-        Route::patch('contact-messages/{contactMessage}',    [\App\Http\Controllers\Admin\ContactMessageController::class, 'update'])->name('contact-messages.update');
-        Route::delete('contact-messages/{contactMessage}',   [\App\Http\Controllers\Admin\ContactMessageController::class, 'destroy'])->name('contact-messages.destroy');
+        Route::get('contact-messages',                          [\App\Http\Controllers\Admin\ContactMessageController::class, 'index'])->name('contact-messages.index');
+        Route::get('contact-messages/{contactMessage}',         [\App\Http\Controllers\Admin\ContactMessageController::class, 'show'])->name('contact-messages.show');
+        Route::patch('contact-messages/{contactMessage}',       [\App\Http\Controllers\Admin\ContactMessageController::class, 'update'])->name('contact-messages.update');
+        Route::post('contact-messages/{contactMessage}/resend', [\App\Http\Controllers\Admin\ContactMessageController::class, 'resend'])->name('contact-messages.resend');
+        Route::delete('contact-messages/{contactMessage}',      [\App\Http\Controllers\Admin\ContactMessageController::class, 'destroy'])->name('contact-messages.destroy');
     });
 });

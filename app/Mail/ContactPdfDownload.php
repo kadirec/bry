@@ -40,6 +40,11 @@ class ContactPdfDownload extends Mailable
         $logo     = $settings['logo_dark'] ?? $settings['logo_light'] ?? 'assets/logo.png';
         $logoUrl  = filter_var($logo, FILTER_VALIDATE_URL) ? $logo : asset($logo);
 
+        // Tokenlı tracking URL — pdf_token yoksa gerçek adrese fallback (eski kayıtlar için).
+        $pdfUrl = $this->contact->pdf_token
+            ? route('pdf.download', ['token' => $this->contact->pdf_token])
+            : \App\Http\Controllers\ContactMessageController::PDF_BILINCINLE_TANIS_URL;
+
         return new Content(
             view: 'emails.contact-pdf-download',
             with: [
@@ -47,7 +52,7 @@ class ContactPdfDownload extends Mailable
                 'siteName'  => $settings['site_name'] ?? 'Bilinçli Ritmik Yaşam',
                 'siteUrl'   => $settings['site_url']  ?? config('app.url'),
                 'logoUrl'   => $logoUrl,
-                'pdfUrl'    => 'https://drive.google.com/file/d/1lxI1gMZSbOVrda1ppro4gwFsjLQdjVDq/view?sc=4296137712271806c4bfc8518a450eba220d10728&pli=1',
+                'pdfUrl'    => $pdfUrl,
                 'methodUrl' => route('programs.methodu-egitimi'),
             ],
         );
