@@ -49,7 +49,7 @@
           <li><a href="{{ route('deneyimler.etkinlik') }}">Etkinlik & Kamp</a></li>
           <li><a href="{{ route('blog') }}">Blog</a></li>
           <li><a href="{{ route('iletisim') }}">İletişim</a></li>
-          <li><a href="https://www.bilincliritmikyasam.com/login" target="_blank" rel="noopener">Akademi Girişi</a></li>
+          <li><a href="https://73ff-bilincliritmikyasam.systeme.io/login" target="_blank" rel="noopener">Akademi Girişi</a></li>
         </ul>
       </nav>
 

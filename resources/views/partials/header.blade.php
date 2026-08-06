@@ -1,8 +1,11 @@
 <header class="site">
   <div class="nav">
-    <a href="{{ route('home') }}" class="brand" aria-label="Bilinçli Ritmik Yaşam ana sayfa">
-      <img src="{{ asset('assets/logo.png') }}" alt="BRY logo" />
-    </a>
+    <div class="nav-left">
+      <a href="{{ route('home') }}" class="brand" aria-label="Bilinçli Ritmik Yaşam ana sayfa">
+        <img src="{{ asset('assets/logo.png') }}" alt="BRY logo" />
+      </a>
+      <a href="{{ route('bry-metodu-ile-tanis') }}" class="btn btn-plum nav-lead-cta">BRY ile Tanış</a>
+    </div>
 
     <nav class="menu" aria-label="Ana menü">
       <div class="item">
@@ -34,8 +37,11 @@
     </nav>
 
     <div class="nav-cta">
-      <a href="https://www.bilincliritmikyasam.com/login" target="_blank" rel="noopener" class="login-link">Akademi Girişi</a>
-      <a href="{{ route('bry-metodu-ile-tanis') }}" class="btn btn-plum">BRY ile Tanış</a>
+      <a href="https://73ff-bilincliritmikyasam.systeme.io/login" target="_blank" rel="noopener" class="login-link login-live">
+        <span class="live-dot" aria-hidden="true"></span>
+        <span class="login-live__text">Akademi Girişi</span>
+      </a>
+      <a href="{{ route('bry-metodu-ile-tanis') }}" class="btn btn-plum nav-lead-cta--drawer">BRY ile Tanış</a>
       <button class="menu-toggle" aria-label="Menüyü aç">☰</button>
     </div>
   </div>
