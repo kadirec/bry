@@ -39,10 +39,22 @@
           <div class="hint">Liste ve kart önizlemelerinde görünür</div>
         </div>
 
-        <div class="adm-field">
-          <label for="body">Gövde (HTML)</label>
-          <textarea id="body" name="body" rows="14" style="font-family: 'SF Mono', Consolas, monospace; font-size: 13px;">{{ old('body', $post->body) }}</textarea>
-          <div class="hint">HTML olarak girilebilir. (İleride zengin metin editörü eklenecek.)</div>
+        <div class="adm-field" id="bodyField" data-editor-mode="rich">
+          <div class="adm-editor__bar">
+            <label for="body" style="margin: 0;">Gövde</label>
+            <button type="button" id="bodySourceToggle" class="adm-editor__toggle" aria-pressed="false">
+              &lt;/&gt; HTML kaynağı
+            </button>
+          </div>
+
+          <div class="adm-editor" id="bodyEditorShell">
+            <div id="bodyEditor"></div>
+          </div>
+
+          {{-- Kaynak modunda düzenlenen ve forma gönderilen asıl alan --}}
+          <textarea id="body" name="body" class="adm-editor__source">{{ old('body', $post->body) }}</textarea>
+
+          <div class="hint">Biçimlendirme araç çubuğunu kullan; ham HTML'e geçmek için “HTML kaynağı”na tıkla.</div>
         </div>
       </div>
 
@@ -154,3 +166,86 @@
   </div>
 </form>
 @endsection
+
+@push('styles')
+  <link rel="stylesheet" href="{{ asset('vendor/quill/quill.snow.css') }}">
+  <link rel="stylesheet" href="{{ asset('css/admin-editor.css') }}">
+  {{-- JS kapalıysa editör kabuğu boş kalmasın, ham textarea'ya düş --}}
+  <noscript><style>
+    #bodyEditorShell, #bodySourceToggle { display: none; }
+    [data-editor-mode="rich"] .adm-editor__source { display: block; }
+  </style></noscript>
+@endpush
+
+@push('scripts')
+<script src="{{ asset('vendor/quill/quill.js') }}"></script>
+<script>
+(function () {
+  const field    = document.getElementById('bodyField');
+  const source   = document.getElementById('body');       // asıl <textarea name="body">
+  const toggle   = document.getElementById('bodySourceToggle');
+  const form     = source.closest('form');
+
+  const quill = new Quill('#bodyEditor', {
+    theme: 'snow',
+    placeholder: 'Yazının gövdesi…',
+    modules: {
+      toolbar: [
+        [{ header: [2, 3, false] }],
+        ['bold', 'italic', 'underline', 'strike'],
+        [{ list: 'ordered' }, { list: 'bullet' }],
+        ['blockquote', 'link'],
+        [{ align: [] }],
+        ['clean'],
+      ],
+    },
+  });
+
+  // Editör içeriği kullanıcı tarafından değiştirildi mi?
+  // Değiştirilmediyse submit'te textarea'ya dokunmayız — böylece Quill'in
+  // desteklemediği elle yazılmış HTML sırf form açıldı diye normalize edilip bozulmaz.
+  let dirty = false;
+  let loading = false;
+
+  function loadIntoEditor(html) {
+    loading = true;
+    quill.setContents([]);                                // önceki içeriği temizle
+    quill.clipboard.dangerouslyPasteHTML(0, html || '');
+    loading = false;
+  }
+
+  function readEditor() {
+    const html = quill.root.innerHTML;
+    return html === '<p><br></p>' ? '' : html;            // Quill'in "boş" hali
+  }
+
+  quill.on('text-change', function (_d, _o, origin) {
+    if (!loading && origin === 'user') dirty = true;
+  });
+
+  loadIntoEditor(source.value);
+
+  toggle.addEventListener('click', function () {
+    const toSource = field.dataset.editorMode === 'rich';
+
+    if (toSource) {
+      if (dirty) source.value = readEditor();             // düzenlenmişse editörden aktar
+      field.dataset.editorMode = 'source';
+      toggle.setAttribute('aria-pressed', 'true');
+      source.focus();
+    } else {
+      loadIntoEditor(source.value);                       // ham HTML'i editöre al
+      dirty = false;                                      // kaynak metni asıl doğru kabul et
+      field.dataset.editorMode = 'rich';
+      toggle.setAttribute('aria-pressed', 'false');
+      quill.focus();
+    }
+  });
+
+  form.addEventListener('submit', function () {
+    // Kaynak modunda textarea zaten kullanıcının yazdığı hâli tutuyor.
+    if (field.dataset.editorMode === 'rich' && dirty) source.value = readEditor();
+  });
+})();
+</script>
+@endpush

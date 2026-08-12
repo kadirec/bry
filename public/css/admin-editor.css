@@ -1,0 +1,111 @@
+/* Zengin metin editörü (Quill 2 / snow teması) — admin form alanlarına uydurulmuş kabuk.
+   Quill'in kendi quill.snow.css'i ayrıca yükleniyor; burada sadece override var. */
+
+.adm-editor {
+  border: 1px solid var(--c-line-3);
+  border-radius: var(--r-md);
+  background: #fff;
+  overflow: hidden;
+  transition: border-color .12s, box-shadow .12s;
+}
+.adm-editor:focus-within {
+  border-color: var(--c-brand-2);
+  box-shadow: 0 0 0 3px rgba(44, 82, 130, 0.12);
+}
+
+/* Quill kendi border'ını çiziyor — kabuk zaten çerçeveli, içerdekini sıfırla */
+.adm-editor .ql-toolbar.ql-snow {
+  border: 0;
+  border-bottom: 1px solid var(--c-line-3);
+  background: var(--c-panel-2);
+  padding: 7px 8px;
+}
+.adm-editor .ql-container.ql-snow {
+  border: 0;
+  font-family: inherit;
+  font-size: 15px;
+}
+.adm-editor .ql-editor {
+  min-height: 340px;
+  line-height: 1.7;
+  color: var(--c-ink);
+  padding: 16px 18px;
+}
+.adm-editor .ql-editor.ql-blank::before {
+  color: var(--c-ink-4);
+  font-style: normal;
+  left: 18px;
+  right: 18px;
+}
+
+/* Editör içi tipografi — sitedeki .post-body görünümüne yaklaştırır */
+.adm-editor .ql-editor h2 { font-size: 24px; font-weight: 600; margin: 26px 0 12px; }
+.adm-editor .ql-editor h3 { font-size: 19px; font-weight: 600; margin: 22px 0 10px; }
+.adm-editor .ql-editor p  { margin-bottom: 14px; }
+.adm-editor .ql-editor blockquote {
+  border-left: 3px solid var(--c-brand-3);
+  padding-left: 14px;
+  color: var(--c-ink-2);
+  font-style: italic;
+}
+.adm-editor .ql-editor img { max-width: 100%; border-radius: 6px; }
+
+.ql-snow .ql-stroke { stroke: var(--c-ink-2); }
+.ql-snow .ql-fill { fill: var(--c-ink-2); }
+.ql-snow .ql-picker { color: var(--c-ink-2); }
+.ql-snow.ql-toolbar button:hover .ql-stroke,
+.ql-snow.ql-toolbar button.ql-active .ql-stroke { stroke: var(--c-brand-2); }
+.ql-snow.ql-toolbar button:hover .ql-fill,
+.ql-snow.ql-toolbar button.ql-active .ql-fill { fill: var(--c-brand-2); }
+.ql-snow.ql-toolbar button:hover,
+.ql-snow.ql-toolbar button.ql-active { background: rgba(44, 82, 130, 0.08); border-radius: 4px; }
+
+/* HTML kaynak modu */
+.adm-editor__bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 6px;
+}
+.adm-editor__toggle {
+  font: inherit;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--c-ink-2);
+  background: var(--c-panel-2);
+  border: 1px solid var(--c-line-3);
+  border-radius: var(--r-sm, 6px);
+  padding: 4px 10px;
+  cursor: pointer;
+  transition: background .12s, color .12s, border-color .12s;
+}
+.adm-editor__toggle:hover { color: var(--c-brand-2); border-color: var(--c-brand-2); }
+.adm-editor__toggle[aria-pressed="true"] {
+  background: var(--c-brand-2);
+  border-color: var(--c-brand-2);
+  color: #fff;
+}
+
+/* .adm-field textarea kuralını yenmek için .adm-field ile birlikte seçiliyor */
+.adm-field .adm-editor__source {
+  width: 100%;
+  min-height: 380px;
+  padding: 14px 16px;
+  border: 1px solid var(--c-line-3);
+  border-radius: var(--r-md);
+  background: #fff;
+  font-family: 'SF Mono', Menlo, Consolas, monospace;
+  font-size: 13px;
+  line-height: 1.6;
+  color: var(--c-ink);
+  resize: vertical;
+}
+.adm-field .adm-editor__source:focus {
+  outline: none;
+  border-color: var(--c-brand-2);
+  box-shadow: 0 0 0 3px rgba(44, 82, 130, 0.12);
+}
+
+[data-editor-mode="rich"]   .adm-editor__source { display: none; }
+[data-editor-mode="source"] .adm-editor        { display: none; }

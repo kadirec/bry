@@ -4261,3 +4261,68 @@
     .pdf-form { padding: 22px; }
     .pdf-form-row { grid-template-columns: 1fr; }
   }
+
+/* ==========================================================================
+   BLOG GÖVDESİ (.post-body)
+   Admin'deki zengin metin editörünün (Quill) ürettiği işaretlemeyi karşılar.
+   Taban font-size/line-height/color blog-show.blade.php'de inline veriliyor.
+   ========================================================================== */
+.post-body > *:first-child { margin-top: 0; }
+.post-body > *:last-child { margin-bottom: 0; }
+.post-body p { margin: 0 0 22px; }
+.post-body h2 {
+  font-size: 30px;
+  font-weight: 600;
+  line-height: 1.3;
+  color: var(--plum-deep);
+  margin: 46px 0 18px;
+}
+.post-body h3 {
+  font-size: 22px;
+  font-weight: 600;
+  line-height: 1.35;
+  color: var(--ink);
+  margin: 34px 0 14px;
+}
+.post-body strong { font-weight: 600; color: var(--ink); }
+.post-body em { font-style: italic; }
+.post-body a {
+  color: var(--plum);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+.post-body a:hover { color: var(--plum-deep); }
+.post-body ul, .post-body ol { margin: 0 0 22px; padding-left: 26px; }
+.post-body li { margin-bottom: 9px; }
+.post-body ul { list-style: disc; }
+.post-body ol { list-style: decimal; }
+.post-body blockquote {
+  margin: 30px 0;
+  padding: 4px 0 4px 22px;
+  border-left: 3px solid var(--plum);
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 20px;
+  color: var(--plum-deep);
+}
+.post-body img {
+  max-width: 100%;
+  height: auto;
+  border-radius: var(--radius-lg);
+  margin: 30px 0;
+}
+.post-body hr { border: 0; border-top: 1px solid var(--line); margin: 40px 0; }
+
+/* Quill hizalama / girinti sınıfları */
+.post-body .ql-align-center  { text-align: center; }
+.post-body .ql-align-right   { text-align: right; }
+.post-body .ql-align-justify { text-align: justify; }
+.post-body .ql-indent-1 { padding-left: 3em; }
+.post-body .ql-indent-2 { padding-left: 6em; }
+.post-body .ql-indent-3 { padding-left: 9em; }
+
+@media (max-width: 600px) {
+  .post-body h2 { font-size: 25px; margin-top: 38px; }
+  .post-body h3 { font-size: 19px; }
+  .post-body blockquote { font-size: 18px; }
+}

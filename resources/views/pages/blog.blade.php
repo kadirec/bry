@@ -80,7 +80,7 @@
       </nav>
       <span class="eyebrow">Blog</span>
       <h1 id="blog-title">Bilinçle <em>Yaşamaya</em> Dair</h1>
-      <p class="lead">Kendini tanıma, ilişkiler, zihin yönetimi ve yaşam ritmi üzerine yazılar. BRY Metodu'nun bakış açısıyla, yaşamın içinden gerçek konular.</p>
+      <p class="lead">Zihin, ilişkiler ve yaşam üzerine yazılar. BRY Metodu'nun bakış açısıyla, yaşamın içinden gerçek konular.</p>
     </div>
   </section>
 
