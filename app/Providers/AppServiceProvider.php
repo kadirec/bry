@@ -8,6 +8,7 @@ use App\Models\ProductReview;
 use App\Models\Setting;
 use App\Models\Testimonial;
 use Illuminate\Auth\Middleware\Authenticate;
+use Illuminate\Pagination\Paginator;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\View;
@@ -24,6 +25,12 @@ class AppServiceProvider extends ServiceProvider
     {
         // Yetkisiz istekleri admin login'e yönlendir
         Authenticate::redirectUsing(fn () => route('admin.login'));
+
+        // Sayfalama yalnızca admin panelinde kullanılıyor; Laravel'in varsayılan
+        // görünümü Tailwind sınıflarına dayanıyor ve panel Tailwind yüklemediği
+        // için stilsiz görünüyordu. Panelin kendi işaretlemesine geçiliyor.
+        Paginator::defaultView('pagination.admin');
+        Paginator::defaultSimpleView('pagination.admin-simple');
 
         View::composer('*', function ($view) {
             // Ayarları her view'a paylaş

@@ -674,8 +674,14 @@ hr { border: 0; border-top: 1px solid var(--c-line); margin: 16px 0; }
   font-size: 13px;
   color: var(--c-ink-2);
 }
-.adm-pagination a:hover { background: var(--c-panel-2); text-decoration: none; }
-.adm-pagination .active span, .adm-pagination [aria-current] { background: var(--c-brand); color: #fff; }
+.adm-pagination a { border: 1px solid var(--c-line-3); background: #fff; text-decoration: none; }
+.adm-pagination a:hover { background: var(--c-panel-2); text-decoration: none; border-color: var(--c-brand-2); color: var(--c-brand-2); }
+.adm-pagination .active span, .adm-pagination [aria-current] {
+  background: var(--c-brand); color: #fff; border: 1px solid var(--c-brand);
+}
+/* Listenin başındaki "Önceki" / sonundaki "Sonraki" tıklanamaz hâli */
+.adm-pagination .is-disabled { color: var(--c-ink-4); border: 1px solid var(--c-line-2); cursor: default; }
+.adm-pagination .is-dots { border: 0; color: var(--c-ink-3); }
 
 /* ----------------------------- Utility ----------------------------- */
 
