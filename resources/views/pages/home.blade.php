@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Bilinçli Ritmik Yaşam (BRY) Metodu | Tuncay Vural — Kendini Tanı, Bilinçle Yaşa (v2)')
+@section('title', 'Bilinçli Ritmik Yaşam (BRY) Metodu | Tuncay Vural — Kendini Tanı, Bilinçli Yaşa')
 @section('description', 'BRY Metodu, insanı zihinsel, duygusal ve ruhsal boyutlarıyla bütünsel ele alan ilk ve tek yaşam metodudur. 22 yıldır 30.000+ kişiye rehberlik eden Tuncay Vural ile kendini tanı, ritmini bul, bilinçli yaşa.')
 @section('keywords', 'bilinçli ritmik yaşam, bry metodu, tuncay vural, kendini tanımak, yaşam metodu, bilinçli yaşam, farkındalık, kendini keşfetmek, kişisel gelişim, doğru karar almak, koçluk')
 @section('canonical', 'https://www.bilincliritmikyasam.com/')
@@ -71,7 +71,7 @@
 @section('content')
 <!-- HERO -->
   <section class="hero" data-screen-label="01 Hero" aria-label="Tanıtım">
-    <div class="container hero-grid">
+    <div class="hero-grid container">
       <div class="hero-portrait-wrap"> 
         <div class="hero-portrait">
           <img src="{{ asset('assets/images/tuncay_vural.png') }}" alt="Tuncay Vural — BRY Metodu Kurucusu" />

@@ -79,7 +79,7 @@
         <span aria-current="page">Blog</span>
       </nav>
       <span class="eyebrow">Blog</span>
-      <h1 id="blog-title">Bilinçle <em>Yaşamaya</em> Dair</h1>
+      <h1 id="blog-title">Bilinçli <em>Yaşamaya</em> Dair</h1>
       <p class="lead">Zihin, ilişkiler ve yaşam üzerine yazılar. BRY Metodu'nun bakış açısıyla, yaşamın içinden gerçek konular.</p>
     </div>
   </section>
