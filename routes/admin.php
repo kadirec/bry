@@ -15,11 +15,9 @@ use Illuminate\Support\Facades\Route;
 
 Route::prefix('admin')->name('admin.')->group(function () {
 
-    // Auth (login/logout/register — admin middleware'siz)
+    // Auth (login/logout — admin middleware'siz)
     Route::get('login', [AuthController::class, 'showLogin'])->name('login');
     Route::post('login', [AuthController::class, 'login'])->name('login.store');
-    Route::get('register', [AuthController::class, 'showRegister'])->name('register');
-    Route::post('register', [AuthController::class, 'register'])->name('register.store');
 
     // Korumalı admin alanı
     Route::middleware(['auth', 'admin'])->group(function () {
