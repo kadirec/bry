@@ -42,6 +42,11 @@
         <span class="sep" aria-hidden="true">/</span>
         <span aria-current="page">{{ Str::limit($post->title, 50) }}</span>
       </nav>
+
+      @if($post->featuredImageUrl())
+        <img src="{{ $post->featuredImageUrl() }}" alt="{{ $post->title }}" style="width: 100%; border-radius: var(--radius-lg); margin-bottom: 36px; margin-top: 24px;">
+      @endif
+
       @if($post->category)<span class="eyebrow">{{ $post->category->name }}</span>@endif
       <h1 id="post-title">{{ $post->title }}</h1>
       @if($post->excerpt)<p class="lead">{{ $post->excerpt }}</p>@endif
@@ -51,25 +56,17 @@
         <span>{{ $post->author }}</span>
         @if($post->reading_minutes)<span class="sep" style="margin: 0 8px;">·</span><span>{{ $post->reading_minutes }} dk okuma</span>@endif
       </div>
-    </div>
-  </section>
-
-  <!-- BODY -->
-  <section style="padding-top: 30px; padding-bottom: 90px;">
-    <div class="container" style="max-width: 760px;">
-      @if($post->featuredImageUrl())
-        <img src="{{ $post->featuredImageUrl() }}" alt="{{ $post->title }}" style="width: 100%; border-radius: var(--radius-lg); margin-bottom: 36px;">
-      @endif
-
       <article class="post-body" style="font-size: 18px; line-height: 1.75; color: var(--ink); max-width: 100%;">
         {!! $post->body !!}
       </article>
 
       <div style="margin-top: 50px; padding-top: 30px; border-top: 1px solid var(--line);">
-        <a href="{{ route('blog') }}" class="btn-arrow">← Tüm Yazılar</a>
+        <a href="{{ route('blog') }}" class="btn-arrow">Tüm Yazılar</a>
       </div>
     </div>
+    
   </section>
+
 
   @if($related->count())
     <!-- İLGİLİ YAZILAR -->
