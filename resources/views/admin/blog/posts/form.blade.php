@@ -101,8 +101,15 @@
 
         <div class="adm-field" style="display: flex; align-items: center; gap: 8px;">
           <input id="is_featured" type="checkbox" name="is_featured" value="1" {{ old('is_featured', $post->is_featured) ? 'checked' : '' }}>
-          <label for="is_featured" style="margin: 0; text-transform: none; letter-spacing: 0;">⭐ Öne çıkan yazı</label>
+          <label for="is_featured" style="margin: 0; text-transform: none; letter-spacing: 0;">⭐ Kendi kategorisinde öne çıkan</label>
         </div>
+        <div class="hint" style="margin: -6px 0 10px;">Blog sayfasında bu yazının kategorisi seçildiğinde üstte öne çıkan olarak gösterilir.</div>
+
+        <div class="adm-field" style="display: flex; align-items: center; gap: 8px;">
+          <input id="is_featured_all" type="checkbox" name="is_featured_all" value="1" {{ old('is_featured_all', $post->is_featured_all) ? 'checked' : '' }}>
+          <label for="is_featured_all" style="margin: 0; text-transform: none; letter-spacing: 0;">🌟 “Tümü” sekmesinde öne çıkan</label>
+        </div>
+        <div class="hint" style="margin: -6px 0 10px;">Blog sayfasında kategori filtresi yokken (Tümü) üstte gösterilir. Hiçbiri işaretli değilse en son yayınlanan yazı öne çıkar.</div>
 
         <div class="adm-field" style="display: flex; align-items: center; gap: 8px;">
           <input id="show_on_home" type="checkbox" name="show_on_home" value="1" {{ old('show_on_home', $post->show_on_home) ? 'checked' : '' }}>

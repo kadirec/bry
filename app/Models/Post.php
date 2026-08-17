@@ -12,7 +12,7 @@ class Post extends Model
     protected $fillable = [
         'category_id', 'title', 'slug', 'excerpt', 'body',
         'featured_image', 'author', 'reading_minutes',
-        'is_featured', 'show_on_home', 'home_sort',
+        'is_featured', 'is_featured_all', 'show_on_home', 'home_sort',
         'status', 'published_at', 'views',
         'meta_title', 'meta_description', 'og_image',
     ];
@@ -20,7 +20,8 @@ class Post extends Model
     protected function casts(): array
     {
         return [
-            'is_featured'  => 'boolean',
+            'is_featured'     => 'boolean',
+            'is_featured_all' => 'boolean',
             'show_on_home' => 'boolean',
             'published_at' => 'datetime',
         ];

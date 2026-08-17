@@ -21,8 +21,13 @@ class BlogController extends Controller
             }
         }
 
-        // Featured post: en yeni öne çıkarılmış, yoksa en yeni yazı
-        $featured = (clone $query)->where('is_featured', true)
+        // Featured post:
+        // - Kategori sekmesindeyken: o kategoride "öne çıkan" işaretli en yeni yazı
+        // - Tümü sekmesindeyken: "tümünde öne çıkan" işaretli en yeni yazı
+        // Hiçbiri yoksa her iki durumda da en yeni yazıya düşer.
+        $featuredColumn = $activeCategory ? 'is_featured' : 'is_featured_all';
+
+        $featured = (clone $query)->where($featuredColumn, true)
             ->latest('published_at')->first()
             ?? (clone $query)->latest('published_at')->first();
 
