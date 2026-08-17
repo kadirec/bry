@@ -142,31 +142,41 @@
       <div class="benefits-grid">
 
         <article class="benefit">
-          <div class="benefit-icon" aria-hidden="true">▶</div>
+          <div class="benefit-icon" aria-hidden="true">
+            <img src="{{ asset('/assets/icons/bry-methodu-egitimi/1.png') }}">
+          </div>
           <h3>BRY Eğitim Serisi Videoları</h3>
           <p>Her modülde Tuncay Vural'ın anlatımıyla hazırlanan video içerikleriyle, BRY metodunu adım adım öğrenir ve kendi yapını fark ederek yaşamındaki birçok konuyu daha net ve bilinçli değerlendirmeye başlarsın.</p>
         </article>
 
         <article class="benefit">
-          <div class="benefit-icon" aria-hidden="true">●</div>
+          <div class="benefit-icon" aria-hidden="true">
+            <img src="{{ asset('/assets/icons/bry-methodu-egitimi/2.png') }}">
+          </div>
           <h3>BRY Canlı Yayın Buluşmaları</h3>
           <p>6 ay boyunca her ay gerçekleştirilen canlı yayın buluşmalarında, öğrendiklerini pekiştirir ve aklına takılan sorulara doğrudan yanıt bulabilirsin. Bu süreç, bilgiyi uygulamaya dönüştürmeni destekler.</p>
         </article>
 
         <article class="benefit">
-          <div class="benefit-icon" aria-hidden="true">↓</div>
+          <div class="benefit-icon" aria-hidden="true">
+            <img src="{{ asset('/assets/icons/bry-methodu-egitimi/3.png') }}">
+          </div>
           <h3>İndirilebilir Eğitim Materyalleri</h3>
           <p>Her derse eşlik eden indirilebilir PDF dosyalarıyla, konunun ana noktalarını daha net kavrayabilir ve öğrendiklerini kolayca tekrar ederek kalıcı hale getirebilirsin.</p>
         </article>
 
         <article class="benefit">
-          <div class="benefit-icon" aria-hidden="true">✉</div>
+          <div class="benefit-icon" aria-hidden="true">
+            <img src="{{ asset('/assets/icons/bry-methodu-egitimi/4.png') }}">
+          </div>
           <h3>Süreci Destekleyen E-Postalar</h3>
           <p>Eğitim sürecinde ve sonrasında gönderilen haftalık e-postalarla, hem her modülde ilerlemeni destekleyen bilgileri alırsın hem de sürecini daha bilinçli şekilde sürdürebilirsin.</p>
         </article>
 
         <article class="benefit">
-          <div class="benefit-icon" aria-hidden="true">✓</div>
+          <div class="benefit-icon" aria-hidden="true">
+            <img src="{{ asset('/assets/icons/bry-methodu-egitimi/5.png') }}">
+          </div>
           <h3>Pekiştirme Testleri</h3>
           <p>Her modül sonunda yer alan testlerle, öğrendiklerini pekiştirir, gelişimini fark eder ve bilgiyi daha kalıcı hale getirebilirsin.</p>
         </article>
@@ -580,7 +590,7 @@
 
   {{-- STICKY BOTTOM CTA --}}
   <div class="sticky-cta" aria-label="BRY Metodu Eğitimi katılım">
-    <div class="container sticky-cta-inner">
+    <div class="sticky-cta-inner container">
       <div class="sticky-cta-info">
         <span class="sticky-cta-title">BRY Metodu <em>Eğitimine Katılım Bedeli</em></span>
         <span class="sticky-cta-price">8.500 ₺</span>
