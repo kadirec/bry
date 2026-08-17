@@ -70,6 +70,11 @@
 @endsection
 
 @section('content')
+@php
+  $academyItems = \App\Models\AcademyCourse::active()->ordered()->get();
+  $courses = $academyItems->where('type', \App\Models\AcademyCourse::TYPE_COURSE);
+  $lives   = $academyItems->where('type', \App\Models\AcademyCourse::TYPE_LIVE);
+@endphp
 <!-- HERO -->
   <section class="page-hero" aria-labelledby="online-title">
     <div class="container">
@@ -95,62 +100,46 @@
       </div>
 
       <div class="course-grid">
-
-        <!-- 1: BRY Metodu Eğitimi (Yetişkinler) -->
-        <article class="course-card">
-          <div class="visual">
-            <img src="{{ asset('assets/images/online_akademi/beymethodu_akademi.png') }}" alt="BRY Metodu Eğitimi — Yetişkinler" class="cover">
-            <span class="seal-first" aria-label="Dünyada İlk">
-              <span class="seal-ring" aria-hidden="true">BİLİNÇLİ RİTMİK YAŞAM · BRY METODU · </span>
-              <span class="seal-core">
-                <em>Dünyada</em>
-                <strong>İlk!</strong>
-              </span>
-            </span>
-            <span class="badge badge-live"><span class="dot" aria-hidden="true"></span>Yayında</span>
-          </div>
-          <div class="body">
-            <h3>BRY Metodu <em>Eğitimi</em> <span style="font-size: 14px; color: var(--ink-mute); font-style: normal; font-family: var(--sans); letter-spacing: 0.04em; vertical-align: middle;">— Yetişkinler</span></h3>
-            <p>BRY Eğitimi, kendini bütünsel olarak tanımanı ve bu bilgiyi yaşamına adım adım uygulamanı sağlayan 4 haftalık sistemli bir eğitim sürecidir.</p>
-            <p>Kendi hızında ilerleyebilir, öğrendiklerini günlük yaşamına adım adım entegre edebilirsin.</p>
-            <p>Canlı yayınlarla süreci pekiştirerek aklındaki sorulara netlik kazandırabilirsin.</p>
-            <a href="{{ route('programs.methodu-egitimi') }}" class="btn-arrow">Eğitimi İncele</a>
-          </div>
-        </article>
-
-        <!-- 2: Gerçek Ben Eğitimi -->
-        <article class="course-card">
-          <div class="visual">
-            <img src="{{ asset('assets/images/online_akademi/gercekben_akademi.png') }}" alt="BRY Metodu ile Gerçek Ben Eğitimi" class="cover">
-            <span class="badge badge-live"><span class="dot" aria-hidden="true"></span>Yayında</span>
-          </div>
-          <div class="body">
-            <h3>BRY Metodu ile <em>Gerçek Ben</em> Eğitimi</h3>
-            <p>Çevrendeki kişilerin etkisinden sıyrılarak, öz değerlerini fark etmeni, anlamanı ve hayatına katabilmeni sağlayan bir eğitimdir.</p>
-            <p>Bu eğitimde zihninin nasıl işlediğini fark eder, seni sen yapan karakter değerlerini tanır ve kişiliğini bu değerlere göre, "gerçek sen" olarak yeniden şekillendirmeyi öğrenirsin.</p>
-            <p>Eğitim sonunda, sana özel karakter değerlerini ve zihinsel işleyişini tanımış olacak; böylece yaşam amaçların doğrultusunda zihnini daha etkili kullanmayı öğrenmiş olacaksın. Gerçek Ben Eğitimi, kısa sürede yüksek farkındalık kazandıran, etkili ve verimliliği yüksek bir eğitimdir.</p>
-            <a href="{{ route('programs.gercek-ben') }}" class="btn-arrow">Eğitimi İncele</a>
-          </div>
-        </article>
-
-        <!-- 3: BRY Metodu Eğitimi (Gençler) -->
-        <article class="course-card is-soon">
-          <div class="visual">
-            <img src="{{ asset('assets/images/online_akademi/brymethodu_gencler.png') }}" alt="BRY Metodu Eğitimi — Gençler" class="cover">
-            <span class="badge">Yakında</span>
-          </div>
-          <div class="body">
-            <h3>BRY Metodu <em>Eğitimi</em> <span style="font-size: 14px; color: var(--ink-mute); font-style: normal; font-family: var(--sans); letter-spacing: 0.04em; vertical-align: middle;">— Gençler</span></h3>
-            <p>Genç bireylerin kendini tanıma, karakter gelişimi ve yaşam yönünü daha bilinçli belirleyebilmesi için hazırlanan bu eğitim, yakında erişime açılacaktır.</p>
-            <a href="#" class="btn-arrow" style="opacity: .6; pointer-events: none;">Yakında Erişime Açılacak</a>
-          </div>
-        </article>
-
+        @foreach($courses as $c)
+          <article class="course-card{{ $c->badge === 'soon' ? ' is-soon' : '' }}">
+            <div class="visual">
+              @if($c->imageUrl())
+                <img src="{{ $c->imageUrl() }}" alt="{{ $c->title_note ? strip_tags($c->titleHtml()) . ' — ' . $c->title_note : strip_tags($c->titleHtml()) }}" class="cover">
+              @endif
+              @if($c->show_seal)
+                <span class="seal-first" aria-label="Dünyada İlk">
+                  <span class="seal-ring" aria-hidden="true">BİLİNÇLİ RİTMİK YAŞAM · BRY METODU · </span>
+                  <span class="seal-core">
+                    <em>Dünyada</em>
+                    <strong>İlk!</strong>
+                  </span>
+                </span>
+              @endif
+              @if($c->badge === 'live')
+                <span class="badge badge-live"><span class="dot" aria-hidden="true"></span>Yayında</span>
+              @elseif($c->badge === 'soon')
+                <span class="badge">Yakında</span>
+              @endif
+            </div>
+            <div class="body">
+              <h3>{!! $c->titleHtml() !!}@if($c->title_note) <span style="font-size: 14px; color: var(--ink-mute); font-style: normal; font-family: var(--sans); letter-spacing: 0.04em; vertical-align: middle;">— {{ $c->title_note }}</span>@endif</h3>
+              @foreach($c->paragraphs() as $p)
+                <p>{{ $p }}</p>
+              @endforeach
+              @if($c->link_url)
+                <a href="{{ $c->link_url }}" class="btn-arrow">{{ $c->link_label ?: 'Eğitimi İncele' }}</a>
+              @elseif($c->link_label)
+                <a href="#" class="btn-arrow" style="opacity: .6; pointer-events: none;">{{ $c->link_label }}</a>
+              @endif
+            </div>
+          </article>
+        @endforeach
       </div>
     </div>
   </section>
 
   <!-- CANLI YAYIN EĞİTİMLER -->
+  @if($lives->isNotEmpty())
   <section class="live-section" aria-labelledby="live-title">
     <div class="container">
       <div class="section-head" style="margin-bottom: 0;">
@@ -160,28 +149,28 @@
       </div>
 
       <div class="live-grid">
-
-        <article class="live-card">
-          <div class="body">
-            <span class="live-tag"><span class="dot" aria-hidden="true"></span>Canlı Yayın</span>
-            <p class="quote">Ertelemek, karakter özelliğin <em>değil</em>; yönetebileceğin bir alışkanlıktır.</p>
-            <p>BRY Metodu ile bu alışkanlığın nedenlerini fark edecek, nasıl kontrol altına alabileceğini öğreneceksin.</p>
-            <a href="#" class="btn-arrow">Detaylar →</a>
-          </div>
-        </article>
-
-        <article class="live-card">
-          <div class="body">
-            <span class="live-tag"><span class="dot" aria-hidden="true"></span>Canlı Yayın</span>
-            <p class="quote">Özgüven eksikliği bir karakter özelliği <em>değil</em>; edinilmiş bir durumdur.</p>
-            <p>Bu eğitimde, özgüveninin neden azaldığını fark edecek ve nasıl güçlendireceğini öğreneceksin.</p>
-            <a href="#" class="btn-arrow">Detaylar →</a>
-          </div>
-        </article>
-
+        @foreach($lives as $l)
+          <article class="live-card">
+            <div class="body">
+              <span class="live-tag"><span class="dot" aria-hidden="true"></span>Canlı Yayın</span>
+              @if($l->quote)
+                <p class="quote">{!! $l->quoteHtml() !!}</p>
+              @endif
+              @foreach($l->paragraphs() as $p)
+                <p>{{ $p }}</p>
+              @endforeach
+              @if($l->link_url)
+                <a href="{{ $l->link_url }}" class="btn-arrow">{{ $l->link_label ?: 'Detaylar' }} →</a>
+              @elseif($l->link_label)
+                <a href="#" class="btn-arrow" style="opacity: .6; pointer-events: none;">{{ $l->link_label }} →</a>
+              @endif
+            </div>
+          </article>
+        @endforeach
       </div>
     </div>
   </section>
+  @endif
 
   @include('partials.contact-cta')
 @endsection

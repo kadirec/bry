@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\AcademyCourseController;
 use App\Http\Controllers\Admin\AuthController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\CorporateLeadController;
@@ -64,6 +65,15 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::get('kurumsal-photos/{kurumsalPhoto}/edit',  [KurumsalPhotoController::class, 'edit'])->name('kurumsal-photos.edit');
         Route::put('kurumsal-photos/{kurumsalPhoto}',       [KurumsalPhotoController::class, 'update'])->name('kurumsal-photos.update');
         Route::delete('kurumsal-photos/{kurumsalPhoto}',    [KurumsalPhotoController::class, 'destroy'])->name('kurumsal-photos.destroy');
+
+        // BRY Online Akademi (eğitimler + canlı yayın eğitimler)
+        Route::post('academy/reorder', [AcademyCourseController::class, 'reorder'])->name('academy.reorder');
+        Route::get('academy',                        [AcademyCourseController::class, 'index'])->name('academy.index');
+        Route::get('academy/create',                 [AcademyCourseController::class, 'create'])->name('academy.create');
+        Route::post('academy',                       [AcademyCourseController::class, 'store'])->name('academy.store');
+        Route::get('academy/{academyCourse}/edit',   [AcademyCourseController::class, 'edit'])->name('academy.edit');
+        Route::put('academy/{academyCourse}',        [AcademyCourseController::class, 'update'])->name('academy.update');
+        Route::delete('academy/{academyCourse}',     [AcademyCourseController::class, 'destroy'])->name('academy.destroy');
 
         // Eğitim Değerlendirmeleri
         Route::post('product-reviews/{product_review}/toggle', [\App\Http\Controllers\Admin\ProductReviewController::class, 'toggle'])->name('product-reviews.toggle');

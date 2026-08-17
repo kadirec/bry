@@ -46,6 +46,10 @@
       <svg class="adm-nav__ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg>
       <span class="adm-nav__label">Dönüşen Hayatlar</span>
     </a>
+    <a href="{{ route('admin.academy.index') }}" class="{{ request()->routeIs('admin.academy.*') ? 'is-active' : '' }}">
+      <svg class="adm-nav__ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10L12 5 2 10l10 5 10-5z"/><path d="M6 12v5c0 1.7 2.7 3 6 3s6-1.3 6-3v-5"/></svg>
+      <span class="adm-nav__label">Online Akademi Eğitimleri</span>
+    </a>
     <a href="{{ route('admin.references.index') }}" class="{{ request()->routeIs('admin.references.*') ? 'is-active' : '' }}">
       <svg class="adm-nav__ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18"/><path d="M5 21V7l7-4 7 4v14"/><path d="M9 21V11h6v10"/></svg>
       <span class="adm-nav__label">Kurumsal Referanslar</span>
