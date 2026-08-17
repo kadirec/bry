@@ -167,7 +167,7 @@
               @if($l->link_url)
                 <a href="{{ $l->link_url }}" class="btn-arrow">{{ $l->link_label ?: 'Detaylar' }} →</a>
               @elseif($l->link_label)
-                <a href="#" class="btn-arrow" style="opacity: .6; pointer-events: none;">{{ $l->link_label }} →</a>
+                <a href="#" class="btn-arrow" style="opacity: .6; pointer-events: none;">{{ $l->link_label }}</a>
               @endif
             </div>
           </article>
