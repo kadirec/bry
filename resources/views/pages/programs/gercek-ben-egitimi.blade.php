@@ -116,7 +116,7 @@
 
         <article class="benefit">
           <div class="benefit-icon" aria-hidden="true">
-            <img src="{{ asset('/assets/icons/bry-methodu-egitimi/1.png') }}">
+            <img src="{{ asset('/assets/icons/gercek-ben-egitimi/1.png') }}">
           </div>
           <h3>Gerçek Ben Nedir?</h3>
           <p>Kendinle ilgili fark etmediğin yönlerini tanıyacak, gerçek değerlerini ise "Evet, ben buyum" diyerek içtenlikle tespit edebileceksin.</p>
@@ -124,7 +124,7 @@
 
         <article class="benefit">
           <div class="benefit-icon" aria-hidden="true">
-          <img src="{{ asset('/assets/icons/bry-methodu-egitimi/2.png') }}">  
+          <img src="{{ asset('/assets/icons/gercek-ben-egitimi/2.png') }}">  
         </div>
           <h3>Gerçek Ben Olmak İçin Ne Yapmalı?</h3>
           <p>Kendinle bağlantı kurmak ve içsel yolculuğunu başlatmak için hangi adımları atman gerektiğini göreceksin.</p>
@@ -132,7 +132,7 @@
 
         <article class="benefit">
           <div class="benefit-icon" aria-hidden="true">
-            <img src="{{ asset('/assets/icons/bry-methodu-egitimi/3.png') }}">
+            <img src="{{ asset('/assets/icons/gercek-ben-egitimi/3.png') }}">
           </div>
           <h3>Zihnin Nasıl Çalışıyor?</h3>
           <p>Zihnin çalışma sistemini ve zihnini etkili olarak yaşam boyu nasıl kullanabileceğini öğreneceksin.</p>
@@ -140,7 +140,7 @@
 
         <article class="benefit">
           <div class="benefit-icon" aria-hidden="true">
-            <img src="{{ asset('/assets/icons/bry-methodu-egitimi/4.png') }}">
+            <img src="{{ asset('/assets/icons/gercek-ben-egitimi/4.png') }}">
           </div>
           <h3>Karakter Değerleri ve Kişilik</h3>
           <p>Kişiliğinin şekillenmesinde hangi değerlerin etkili olduğunu anlayacaksın.</p>
@@ -148,7 +148,7 @@
 
         <article class="benefit">
           <div class="benefit-icon" aria-hidden="true">
-            <img src="{{ asset('/assets/icons/bry-methodu-egitimi/5.png') }}">
+            <img src="{{ asset('/assets/icons/gercek-ben-egitimi/5.png') }}">
           </div>
           <h3>Karakter Değerlerine Uyumlu Kişilik Gelişimi</h3>
           <p>Sana ait olan değerlere göre kişiliğini nasıl geliştirebileceğini öğreneceksin.</p>
@@ -156,7 +156,7 @@
 
         <article class="benefit">
           <div class="benefit-icon" aria-hidden="true">
-            <img src="{{ asset('/assets/icons/bry-methodu-egitimi/6.png') }}">
+            <img src="{{ asset('/assets/icons/gercek-ben-egitimi/6.png') }}">
           </div>
           <h3>Gerçek Ben Olarak Yaşam</h3>
           <p>Kendinle uyumlu bir yaşam kurmanın ne anlama geldiğini ve bunu hayatına nasıl katabileceğini öğreneceksin.</p>
