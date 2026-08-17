@@ -65,18 +65,26 @@
         </div>
       </div>
 
-      <div class="adm-card" data-only="course">
+      <div class="adm-card">
         <h2>Görsel</h2>
-        <p class="sub">JPG / PNG / WEBP · max 8 MB. Kart görselleri dikey-portre oranında iyi durur.</p>
+        <p class="sub">
+          JPG / PNG / WEBP · max 8 MB.
+          <span data-only="course">Eğitim kartlarında görsel kartın sol sütununu kaplar; dikey-portre oran iyi durur.</span>
+          <span data-only="live">Canlı yayın kartlarında afiş görseli olarak solda görünür. Boş bırakırsan kart yalnızca metinle basılır.</span>
+        </p>
 
         @if($item->imageUrl())
           <div style="margin-bottom: 14px;">
             <img src="{{ $item->imageUrl() }}" alt="" style="max-width: 240px; border-radius: 10px; border: 1px solid var(--a-line);">
           </div>
+          <div class="adm-field" style="display: flex; align-items: center; gap: 8px;">
+            <input id="remove_image" type="checkbox" name="remove_image" value="1">
+            <label for="remove_image" style="margin: 0; text-transform: none; letter-spacing: 0;">Görseli kaldır</label>
+          </div>
         @endif
 
         <div class="adm-field">
-          <label for="image_file_upload">Görsel {{ $item->image_path ? '(değiştirmek için)' : '' }}</label>
+          <label for="image_file_upload">{{ $item->image_path ? 'Görseli değiştir' : 'Görsel yükle' }}</label>
           <input id="image_file_upload" type="file" name="image_file_upload" accept="image/jpeg,image/png,image/webp">
         </div>
       </div>

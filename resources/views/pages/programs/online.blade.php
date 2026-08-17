@@ -151,6 +151,11 @@
       <div class="live-grid">
         @foreach($lives as $l)
           <article class="live-card">
+            @if($l->imageUrl())
+              <div class="visual">
+                <img src="{{ $l->imageUrl() }}" alt="{{ strip_tags($l->titleHtml()) }} afişi" class="cover" loading="lazy">
+              </div>
+            @endif
             <div class="body">
               <span class="live-tag"><span class="dot" aria-hidden="true"></span>Canlı Yayın</span>
               @if($l->quote)

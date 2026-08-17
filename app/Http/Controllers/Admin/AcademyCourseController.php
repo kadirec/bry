@@ -62,6 +62,9 @@ class AcademyCourseController extends Controller
         if ($request->hasFile('image_file_upload')) {
             $this->deleteUploadedImage($academyCourse);
             $data['image_path'] = $request->file('image_file_upload')->store('online-akademi', 'public');
+        } elseif ($request->boolean('remove_image')) {
+            $this->deleteUploadedImage($academyCourse);
+            $data['image_path'] = null;
         }
 
         $academyCourse->update($data);
