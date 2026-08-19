@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
 
 class Post extends Model
@@ -49,6 +50,17 @@ class Post extends Model
                 $q->whereNull('published_at')
                   ->orWhere('published_at', '<=', now());
             });
+    }
+
+    /**
+     * En yeniden eskiye sıralar. published_at boşsa created_at'e düşer,
+     * böylece tarihi girilmemiş yeni yazılar listenin sonuna atılmaz.
+     */
+    public function scopeNewestFirst(Builder $query): Builder
+    {
+        return $query
+            ->orderByDesc(DB::raw('COALESCE(published_at, created_at)'))
+            ->orderByDesc('id');
     }
 
     public function getRouteKeyName(): string

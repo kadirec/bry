@@ -72,14 +72,14 @@ class AppServiceProvider extends ServiceProvider
                 $selected = $hasHomeCols
                     ? Post::published()->with('category')
                         ->where('show_on_home', true)
-                        ->orderBy('home_sort')->latest('published_at')
+                        ->orderBy('home_sort')->newestFirst()
                         ->limit(12)->get()
                     : collect();
 
                 $posts = $selected->isNotEmpty()
                     ? $selected
                     : Post::published()->with('category')
-                        ->latest('published_at')->limit(12)->get();
+                        ->newestFirst()->limit(12)->get();
 
                 $view->with('homeLatestPosts', $posts);
             } catch (\Throwable $e) {

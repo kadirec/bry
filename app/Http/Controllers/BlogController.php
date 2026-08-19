@@ -28,12 +28,12 @@ class BlogController extends Controller
         $featuredColumn = $activeCategory ? 'is_featured' : 'is_featured_all';
 
         $featured = (clone $query)->where($featuredColumn, true)
-            ->latest('published_at')->first()
-            ?? (clone $query)->latest('published_at')->first();
+            ->newestFirst()->first()
+            ?? (clone $query)->newestFirst()->first();
 
         $posts = $query
             ->when($featured, fn ($q) => $q->where('id', '!=', $featured->id))
-            ->latest('published_at')
+            ->newestFirst()
             ->get();
 
         $categories = Category::withCount(['posts as posts_count' => fn ($q) => $q->published()])
@@ -59,7 +59,7 @@ class BlogController extends Controller
         $related = Post::published()
             ->where('id', '!=', $post->id)
             ->when($post->category_id, fn ($q) => $q->where('category_id', $post->category_id))
-            ->latest('published_at')->limit(3)->get();
+            ->newestFirst()->limit(3)->get();
 
         return view('pages.blog-show', [
             'post'    => $post->load('category'),
