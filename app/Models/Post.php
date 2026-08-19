@@ -12,7 +12,7 @@ class Post extends Model
 {
     protected $fillable = [
         'category_id', 'title', 'slug', 'excerpt', 'body',
-        'featured_image', 'author', 'reading_minutes',
+        'featured_image', 'image_position', 'author', 'reading_minutes',
         'is_featured', 'is_featured_all', 'show_on_home', 'home_sort',
         'status', 'published_at', 'views',
         'meta_title', 'meta_description', 'og_image',
@@ -66,6 +66,15 @@ class Post extends Model
     public function getRouteKeyName(): string
     {
         return 'slug';
+    }
+
+    /**
+     * Görselin kırpma odağı — CSS object-position değeri.
+     * Admin panelinden seçilir, boşsa ortadan kırpar.
+     */
+    public function imagePosition(): string
+    {
+        return $this->image_position ?: '50% 50%';
     }
 
     public function featuredImageUrl(): ?string

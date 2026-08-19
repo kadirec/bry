@@ -109,3 +109,44 @@
 
 [data-editor-mode="rich"]   .adm-editor__source { display: none; }
 [data-editor-mode="source"] .adm-editor        { display: none; }
+
+/* ── Görsel kırpma odağı seçici ─────────────────────────────── */
+.focus-picker[hidden] { display: none; }
+.focus-frame {
+  position: relative;
+  aspect-ratio: 4/3;               /* blog'daki .featured-post .visual ile aynı oran */
+  border-radius: 8px;
+  overflow: hidden;
+  background: #14191A;
+  cursor: crosshair;
+  margin-bottom: 8px;
+  touch-action: none;              /* dokunmatikte sürükleme kaydırmayı tetiklemesin */
+  user-select: none;
+}
+.focus-frame img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  display: block;
+  pointer-events: none;
+}
+.focus-dot {
+  position: absolute;
+  width: 22px; height: 22px;
+  margin: -11px 0 0 -11px;
+  border-radius: 50%;
+  border: 2px solid #fff;
+  box-shadow: 0 0 0 2px rgba(0,0,0,0.45), 0 2px 8px rgba(0,0,0,0.5);
+  background: rgba(255,255,255,0.18);
+  pointer-events: none;
+  transition: left .08s linear, top .08s linear;
+}
+.focus-frame.is-dragging .focus-dot { transition: none; }
+.focus-reset {
+  background: none;
+  border: 0;
+  padding: 0 0 0 4px;
+  color: inherit;
+  text-decoration: underline;
+  cursor: pointer;
+  font: inherit;
+}

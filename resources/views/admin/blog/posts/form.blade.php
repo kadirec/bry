@@ -150,8 +150,23 @@
       <div class="adm-card">
         <h2>Öne Çıkan Görsel</h2>
 
+        @php $imgPos = old('image_position', $post->imagePosition()); @endphp
+
+        {{-- Kırpma odağı: 4/3 önizleme (öne çıkan alanla aynı oran), tıkla ya da sürükle --}}
+        <div class="focus-picker" id="focusPicker" @if(! $post->featured_image) hidden @endif>
+          <div class="focus-frame" id="focusFrame">
+            <img id="focusImg" src="{{ $post->featuredImageUrl() }}" alt=""
+                 style="object-position: {{ $imgPos }};">
+            <span class="focus-dot" id="focusDot"></span>
+          </div>
+          <input type="hidden" name="image_position" id="image_position" value="{{ $imgPos }}">
+          <div class="hint">
+            Görselin hangi kısmının görüneceğini seçmek için önizlemeye tıkla veya noktayı sürükle.
+            <button type="button" class="focus-reset" id="focusReset">ortala</button>
+          </div>
+        </div>
+
         @if($post->featured_image)
-          <img src="{{ $post->featuredImageUrl() }}" alt="Mevcut görsel" style="width: 100%; border-radius: 8px; margin-bottom: 12px;">
           <div class="adm-field" style="display: flex; align-items: center; gap: 8px;">
             <input id="remove_image" type="checkbox" name="remove_image" value="1">
             <label for="remove_image" style="margin: 0; text-transform: none; letter-spacing: 0; color: var(--a-danger);">Mevcut görseli sil</label>
@@ -252,6 +267,61 @@
   form.addEventListener('submit', function () {
     // Kaynak modunda textarea zaten kullanıcının yazdığı hâli tutuyor.
     if (field.dataset.editorMode === 'rich' && dirty) source.value = readEditor();
+  });
+})();
+</script>
+
+<script>
+/* Görsel kırpma odağı — tıkla ya da sürükle, object-position olarak kaydedilir. */
+(function () {
+  const picker = document.getElementById('focusPicker');
+  const frame  = document.getElementById('focusFrame');
+  const img    = document.getElementById('focusImg');
+  const dot    = document.getElementById('focusDot');
+  const input  = document.getElementById('image_position');
+  const reset  = document.getElementById('focusReset');
+  const file   = document.getElementById('featured_image_file');
+  if (!picker || !frame || !img || !input) return;
+
+  function apply(x, y) {
+    const pos = Math.round(x) + '% ' + Math.round(y) + '%';
+    input.value = pos;
+    img.style.objectPosition = pos;
+    dot.style.left = x + '%';
+    dot.style.top  = y + '%';
+  }
+
+  // Kayıtlı değeri noktaya yansıt
+  const saved = (input.value || '50% 50%').match(/(\d{1,3})%\s+(\d{1,3})%/);
+  apply(saved ? +saved[1] : 50, saved ? +saved[2] : 50);
+
+  function pick(e) {
+    const r = frame.getBoundingClientRect();
+    const x = Math.min(100, Math.max(0, ((e.clientX - r.left) / r.width)  * 100));
+    const y = Math.min(100, Math.max(0, ((e.clientY - r.top)  / r.height) * 100));
+    apply(x, y);
+  }
+
+  frame.addEventListener('pointerdown', function (e) {
+    frame.setPointerCapture(e.pointerId);
+    frame.classList.add('is-dragging');
+    pick(e);
+  });
+  frame.addEventListener('pointermove', function (e) {
+    if (frame.classList.contains('is-dragging')) pick(e);
+  });
+  ['pointerup', 'pointercancel'].forEach(function (evt) {
+    frame.addEventListener(evt, function () { frame.classList.remove('is-dragging'); });
+  });
+
+  if (reset) reset.addEventListener('click', function () { apply(50, 50); });
+
+  // Yeni dosya seçilince önizlemeyi anında değiştir
+  if (file) file.addEventListener('change', function () {
+    const f = file.files && file.files[0];
+    if (!f) return;
+    img.src = URL.createObjectURL(f);
+    picker.hidden = false;
   });
 })();
 </script>

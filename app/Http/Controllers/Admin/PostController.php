@@ -96,6 +96,7 @@ class PostController extends Controller
             'slug'             => ['nullable', 'string', 'max:255', 'alpha_dash',
                 Rule::unique('posts', 'slug')->ignore($ignoreId)],
             'category_id'      => ['nullable', 'integer', 'exists:categories,id'],
+            'image_position'   => ['nullable', 'string', 'max:20', 'regex:/^\d{1,3}% \d{1,3}%$/'],
             'excerpt'          => ['nullable', 'string', 'max:600'],
             'body'             => ['nullable', 'string'],
             'author'           => ['required', 'string', 'max:120'],
@@ -113,6 +114,7 @@ class PostController extends Controller
         ];
 
         $data = $request->validate($rules);
+        $data['image_position']  = $data['image_position'] ?? '50% 50%';
         $data['is_featured']     = $request->boolean('is_featured');
         $data['is_featured_all'] = $request->boolean('is_featured_all');
         $data['show_on_home'] = $request->boolean('show_on_home');

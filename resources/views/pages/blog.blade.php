@@ -104,7 +104,7 @@
         <article class="featured-post">
           <a href="{{ route('blog.show', $featured) }}" class="visual" aria-label="Öne çıkan yazıyı oku">
             @if($featured->featuredImageUrl())
-              <img src="{{ $featured->featuredImageUrl() }}" alt="" class="cover" loading="lazy">
+              <img src="{{ $featured->featuredImageUrl() }}" alt="" class="cover" loading="lazy" style="object-position: {{ $featured->imagePosition() }};">
             @endif
             <span class="feat-tag">Öne Çıkan</span>
           </a>
@@ -127,7 +127,7 @@
           <a href="{{ route('blog.show', $post) }}" class="post-card">
             <div class="visual">
               @if($post->featuredImageUrl())
-                <img src="{{ $post->featuredImageUrl() }}" alt="" class="cover" loading="lazy">
+                <img src="{{ $post->featuredImageUrl() }}" alt="" class="cover" loading="lazy" style="object-position: {{ $post->imagePosition() }};">
               @endif
             </div>
             @if($post->category)<span class="cat-pill">{{ $post->category->name }}</span>@endif

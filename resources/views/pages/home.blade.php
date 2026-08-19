@@ -307,7 +307,7 @@
                 <a class="post" href="{{ route('blog.show', $post) }}">
                   <div class="post-cover {{ $tint }}">
                     @if($cover)
-                      <img src="{{ $cover }}" alt="" loading="lazy">
+                      <img src="{{ $cover }}" alt="" loading="lazy" style="object-position: {{ $post->imagePosition() }};">
                     @else
                       <span class="ph-text">[ blog görseli ]</span>
                     @endif

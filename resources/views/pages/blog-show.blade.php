@@ -81,7 +81,7 @@
             <a href="{{ route('blog.show', $r) }}" class="post-card">
               <div class="visual">
                 @if($r->featuredImageUrl())
-                  <img src="{{ $r->featuredImageUrl() }}" alt="" class="cover" loading="lazy">
+                  <img src="{{ $r->featuredImageUrl() }}" alt="" class="cover" loading="lazy" style="object-position: {{ $r->imagePosition() }};">
                 @endif
               </div>
               @if($r->category)<span class="cat-pill">{{ $r->category->name }}</span>@endif
