@@ -191,7 +191,7 @@
 
 @push('styles')
   <link rel="stylesheet" href="{{ asset('vendor/quill/quill.snow.css') }}">
-  <link rel="stylesheet" href="{{ asset('css/admin-editor.css') }}">
+  <link rel="stylesheet" href="{{ asset('css/admin-editor.css') }}?v={{ @filemtime(public_path('css/admin-editor.css')) ?: '1' }}">
   {{-- JS kapalıysa editör kabuğu boş kalmasın, ham textarea'ya düş --}}
   <noscript><style>
     #bodyEditorShell, #bodySourceToggle { display: none; }

@@ -2799,13 +2799,17 @@
     flex-direction: column;
     flex: 1;
   }
-  .course-card h3 {
+  .course-card h3,
+  .live-card .body h3 {
     font-size: 22px;
     line-height: 1.25;
     letter-spacing: -0.015em;
     margin-bottom: 14px;
   }
-  .course-card h3 em { font-family: var(--serif); font-style: italic; color: var(--plum-deep); }
+  .course-card h3 em,
+  .live-card .body h3 em { 
+    font-family: var(--serif); font-style: italic; color: var(--plum-deep); 
+  }
   .course-card .body p {
     color: var(--ink-soft);
     font-size: 15.5px;
@@ -2935,8 +2939,13 @@
     line-height: 1.65;
     margin-bottom: 22px;
   }
-  .live-card .btn-arrow { margin-top: auto; align-self: flex-start; padding: 10px 20px; font-size: 13px; }
 
+  .live-card .btn-arrow {
+    margin-top: auto;
+    align-self: flex-start;
+    padding: 0;
+    font-size: 15px;
+}
   /* Afiş varken sol şerit görselin üzerinde durur, gövde ekstra boşluğa gerek duymaz */
   .live-card:has(.visual) .body { padding-left: 30px; }
 
@@ -4358,6 +4367,59 @@
 .post-body .ql-indent-2 { padding-left: 6em; }
 .post-body .ql-indent-3 { padding-left: 9em; }
 
+@media (max-width:991px) {
+    section[aria-labelledby="courses-title"] .section-head {
+        margin-bottom: 25px !important;
+    }
+    .live-section {
+        padding: 60px 0;
+    }
+    .live-grid {
+        gap: 15px;
+        margin-top: 20px;
+    }
+    .section-head .eyebrow {
+        margin-bottom: 14px;
+        font-size: 12px;
+    }
+    .section-head p {
+        font-size: 15.5px !important;
+        margin-top: 10px !important;
+    }
+    .section-head h2 {
+        font-size: 22px;
+    }
+    .live-card .live-tag {
+        gap: 6px;
+        padding: 4px 9px;
+        font-size: 10px;
+        margin-bottom: 10px;
+    }
+    .live-card:has(.visual) .body {
+        padding: 25px;
+    }
+    .live-card .btn-arrow {
+        font-size: 14px;
+    }
+    .live-card .body p {
+        font-size: 14px;
+        margin-bottom: 10px;
+    }
+    .course-card .body {
+        padding: 25px;
+    }
+    .course-card .body .btn-arrow {
+        font-size: 14px;
+    }
+    .course-card h3, .live-card .body h3 {
+        font-size: 18px;
+        margin-bottom: 10px;
+    }
+    .course-card .body p {
+        font-size: 14px;
+        margin-bottom: 10px;
+    }
+}
 @media (max-width: 600px) {
   .post-body h2 { font-size: 25px; margin-top: 38px; }
   .post-body h3 { font-size: 19px; }

@@ -159,7 +159,7 @@
             <div class="body">
               <span class="live-tag"><span class="dot" aria-hidden="true"></span>Canlı Yayın</span>
               @if($l->quote)
-                <p class="quote">{!! $l->quoteHtml() !!}</p>
+                <h3>{!! $l->quoteHtml() !!}</h3>
               @endif
               @foreach($l->paragraphs() as $p)
                 <p>{{ $p }}</p>

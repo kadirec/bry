@@ -12,6 +12,7 @@ Route::view('/bry-metodu-ile-tanis', 'pages.bry-metodu-ile-tanis')->name('bry-me
 Route::view('/bry-bireysel-ve-ozel-programlar', 'pages.programs.bireysel')->name('programs.bireysel');
 Route::view('/bry-online-akademi', 'pages.programs.online')->name('programs.online');
 Route::view('/bry-methodu-egitimi', 'pages.programs.bry-methodu-egitimi')->name('programs.methodu-egitimi');
+Route::permanentRedirect('/bry-metodu-egitimi', '/bry-methodu-egitimi');
 Route::view('/gercek-ben-egitimi', 'pages.programs.gercek-ben-egitimi')->name('programs.gercek-ben');
 Route::view('/bry-kurumsal-programlar', 'pages.programs.kurumsal')->name('programs.kurumsal');
 
