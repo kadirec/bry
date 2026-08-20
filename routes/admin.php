@@ -12,6 +12,7 @@ use App\Http\Controllers\Admin\PostController;
 use App\Http\Controllers\Admin\ReferenceController;
 use App\Http\Controllers\Admin\SettingsController;
 use App\Http\Controllers\Admin\TestimonialController;
+use App\Http\Controllers\Admin\UserController;
 use Illuminate\Support\Facades\Route;
 
 Route::prefix('admin')->name('admin.')->group(function () {
@@ -25,6 +26,9 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::post('logout', [AuthController::class, 'logout'])->name('logout');
 
         Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
+
+        // Kullanıcılar (panel erişimi olan hesaplar)
+        Route::resource('users', UserController::class)->except(['show']);
 
         // Site Settings (group bazlı tabs)
         Route::get('settings/{group?}', [SettingsController::class, 'index'])->name('settings.index');

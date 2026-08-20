@@ -92,6 +92,10 @@
     </a>
 
     <div class="adm-nav__group">Hesap</div>
+    <a href="{{ route('admin.users.index') }}" class="{{ request()->routeIs('admin.users.*') ? 'is-active' : '' }}">
+      <svg class="adm-nav__ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><line x1="19" y1="8" x2="19" y2="14"/><line x1="22" y1="11" x2="16" y2="11"/></svg>
+      <span class="adm-nav__label">Kullanıcılar</span>
+    </a>
     <form action="{{ route('admin.logout') }}" method="POST" style="margin:0;">
       @csrf
       <button type="submit" class="adm-nav__link">
