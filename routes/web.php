@@ -26,6 +26,9 @@ Route::get('/blog',         [\App\Http\Controllers\BlogController::class, 'index
 Route::get('/blog/{post}',  [\App\Http\Controllers\BlogController::class, 'show'])->name('blog.show');
 Route::view('/iletisim', 'pages.iletisim')->name('iletisim');
 
+// SEO
+Route::get('/sitemap.xml', \App\Http\Controllers\SitemapController::class)->name('sitemap');
+
 // Media streaming — Range request destekli (dev server için gerekli)
 Route::get('/media/{file}', function (string $file) {
     foreach ([
