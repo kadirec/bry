@@ -34,7 +34,7 @@
           </a>
         </div>
 
-        <div class="foot-brand foot-brand--inline">
+        <div class="foot-brand--inline foot-brand">
           <img src="{{ asset('assets/logo-dark.png') }}" alt="BRY logo" />
           <p>Bilinçli Ritmik Yaşam (BRY) Metodu — kendini bütünsel olarak tanımak ve yaşamını bilinçli yönlendirmek isteyenler için geliştirilmiş, içeriği itibarıyla ilk ve tek yaşam metodu.</p>
         </div>
@@ -49,7 +49,7 @@
           <li><a href="{{ route('deneyimler.etkinlik') }}">Etkinlik & Kamp</a></li>
           <li><a href="{{ route('blog') }}">Blog</a></li>
           <li><a href="{{ route('iletisim') }}">İletişim</a></li>
-          <li><a href="https://73ff-bilincliritmikyasam.systeme.io/login" target="_blank" rel="noopener">Akademi Girişi</a></li>
+          <li><a href="https://online.bilincliritmikyasam.com/tr/login" target="_blank" rel="noopener">Akademi Girişi</a></li>
         </ul>
       </nav>
 

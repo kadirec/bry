@@ -37,7 +37,7 @@
     </nav>
 
     <div class="nav-cta">
-      <a href="https://73ff-bilincliritmikyasam.systeme.io/login" target="_blank" rel="noopener" class="login-link login-live">
+      <a href="https://online.bilincliritmikyasam.com/tr/login" target="_blank" rel="noopener" class="login-link login-live">
         <span class="live-dot" aria-hidden="true"></span>
         <span class="login-live__text">Akademi Girişi</span>
       </a>
