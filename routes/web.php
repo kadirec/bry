@@ -26,6 +26,11 @@ Route::get('/blog',         [\App\Http\Controllers\BlogController::class, 'index
 Route::get('/blog/{post}',  [\App\Http\Controllers\BlogController::class, 'show'])->name('blog.show');
 Route::view('/iletisim', 'pages.iletisim')->name('iletisim');
 
+// Hukuki metinler
+Route::view('/kvkk-gizlilik-politikasi', 'pages.legal.gizlilik')->name('legal.gizlilik');
+Route::view('/cerez-politikasi', 'pages.legal.cerez')->name('legal.cerez');
+Route::view('/mesafeli-satis-sozlesmesi', 'pages.legal.mesafeli')->name('legal.mesafeli');
+
 // SEO
 Route::get('/sitemap.xml', \App\Http\Controllers\SitemapController::class)->name('sitemap');
 

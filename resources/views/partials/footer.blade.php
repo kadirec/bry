@@ -130,9 +130,9 @@
     <div class="foot-base">
       <div>© {{ date('Y') }} Bilinçli Ritmik Yaşam. Tüm hakları saklıdır.</div>
       <ul class="foot-base-links">
-        <li><a href="#kisisel-verilerin-korunmasi">KVKK / Gizlilik Politikası</a></li>
-        <li><a href="#cerez-politikasi">Çerez Politikası</a></li>
-        <li><a href="#mesafeli-satis-sozlesmesi">Mesafeli Satış Sözleşmesi</a></li>
+        <li><a href="{{ route('legal.gizlilik') }}" data-open-modal="legal-gizlilik-modal">KVKK / Gizlilik Politikası</a></li>
+        <li><a href="{{ route('legal.cerez') }}" data-open-modal="legal-cerez-modal">Çerez Politikası</a></li>
+        <li><a href="{{ route('legal.mesafeli') }}" data-open-modal="legal-mesafeli-modal">Mesafeli Satış Sözleşmesi</a></li>
         <li class="foot-pay" aria-label="Güvenli Ödeme">
           <span class="foot-pay-label">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
@@ -165,4 +165,6 @@
       </ul>
     </div>
   </div>
+
+  @include('partials.legal-modals')
 </footer>

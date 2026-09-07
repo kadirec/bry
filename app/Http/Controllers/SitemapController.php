@@ -33,6 +33,9 @@ class SitemapController extends Controller
         'deneyimler.kurumsal'      => ['monthly', '0.6'],
         'blog'                     => ['daily',   '0.9'],
         'iletisim'                 => ['yearly',  '0.6'],
+        'legal.gizlilik'           => ['yearly',  '0.3'],
+        'legal.cerez'              => ['yearly',  '0.3'],
+        'legal.mesafeli'           => ['yearly',  '0.3'],
     ];
 
     private static function url(string $path): string

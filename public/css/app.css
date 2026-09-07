@@ -4425,3 +4425,73 @@
   .post-body h3 { font-size: 19px; }
   .post-body blockquote { font-size: 18px; }
 }
+
+/* ─────────────────────────────────────────────────────────────
+   Hukuki metin sayfaları (KVKK / Çerez / Mesafeli Satış)
+   ───────────────────────────────────────────────────────────── */
+.legal-section { padding-top: 10px; padding-bottom: 70px; }
+
+.legal-doc {
+  background: var(--cream);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  padding: 40px 48px 36px;
+  max-width: 900px;
+}
+@media (max-width: 720px) {
+  .legal-doc { padding: 26px 20px 22px; border-radius: 18px; }
+}
+
+.legal-doc h4 {
+  font-size: 15px;
+  margin: 26px 0 10px;
+  color: var(--plum-deep);
+  letter-spacing: 0.01em;
+}
+.legal-doc h4:first-child { margin-top: 0; }
+.legal-doc p,
+.legal-doc li {
+  font-size: 15px;
+  line-height: 1.75;
+  color: var(--ink-soft);
+  margin: 0 0 12px;
+  max-width: none;
+}
+.legal-doc ul { padding-left: 22px; margin: 0 0 14px; }
+.legal-doc a { color: var(--plum-deep); text-decoration: underline; }
+
+.legal-updated {
+  font-size: 13px !important;
+  color: var(--ink-mute) !important;
+  margin-bottom: 22px !important;
+}
+.legal-note {
+  margin-top: 22px !important;
+  font-size: 12.5px !important;
+  color: var(--ink-mute) !important;
+}
+
+.legal-other {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px 18px;
+  max-width: 900px;
+  margin: 24px 0 0;
+  font-size: 14px;
+  color: var(--ink-mute);
+}
+.legal-other a { color: var(--plum-deep); text-decoration: none; }
+.legal-other a:hover { text-decoration: underline; }
+
+/* Modal alt linki */
+.kvkk-modal-foot {
+  margin: 18px 0 0;
+  padding-top: 14px;
+  border-top: 1px solid var(--line);
+  font-size: 14px;
+}
+.kvkk-modal-foot a { color: var(--plum-deep); font-weight: 600; }
+
+/* Footer yasal linkleri */
+.foot-base-links a { cursor: pointer; }
