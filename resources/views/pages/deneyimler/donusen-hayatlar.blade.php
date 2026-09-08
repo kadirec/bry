@@ -122,5 +122,13 @@
     </div>
   </section>
 
+  {{-- KATILIMCI DEĞERLENDİRMELERİ (Genel) --}}
+  @include('partials.product-reviews', [
+    'reviewsTitle'      => 'Deneyimlerini <em>kendi sözleriyle</em> anlatıyorlar',
+    'reviewsIntro'      => '',
+    'reviewDefaultSlug' => 'genel',
+    'reviewsDark'       => true,
+  ])
+
   @include('partials.contact-cta')
 @endsection

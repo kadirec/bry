@@ -109,8 +109,11 @@ class AppServiceProvider extends ServiceProvider
             ]);
         });
 
-        // BRY Metodu Eğitimi sayfası — sadece "Genel Değerlendirme" yorumları + captcha
-        View::composer('pages.programs.bry-methodu-egitimi', function ($view) {
+        // BRY Metodu Eğitimi & BRY ile Dönüşen Hayatlar — sadece "Genel Değerlendirme" yorumları + captcha
+        View::composer([
+            'pages.programs.bry-methodu-egitimi',
+            'pages.deneyimler.donusen-hayatlar',
+        ], function ($view) {
             try {
                 $reviews = Schema::hasTable('product_reviews')
                     ? ProductReview::approved()->forProduct('genel')
