@@ -5,13 +5,16 @@
   $reviewsIntro       = $reviewsIntro       ?? 'Bu dönüşümü yaşayan diğer katılımcıların deneyimlerini aşağıda inceleyebilirsiniz.';
   $reviewsSectionId   = $reviewsSectionId   ?? 'degerlendir';
   $reviewDefaultSlug  = $reviewDefaultSlug  ?? 'genel';
+  $reviewsDark        = $reviewsDark        ?? false;
 @endphp
 
-<section class="alt" id="{{ $reviewsSectionId }}" aria-labelledby="deneyim-title" style="padding: 50px 0; scroll-margin-top: 80px;">
+<section class="{{ $reviewsDark ? 'reviews-dark' : 'alt' }}" id="{{ $reviewsSectionId }}" aria-labelledby="deneyim-title" style="padding: 50px 0; scroll-margin-top: 80px;">
   <div class="container">
     <div class="section-head section-head-center">
       <h2 id="deneyim-title">{!! $reviewsTitle !!}</h2>
-      <p>{{ $reviewsIntro }}</p>
+      @if(trim($reviewsIntro) !== '')
+        <p>{{ $reviewsIntro }}</p>
+      @endif
     </div>
 
     @if($productReviews->isNotEmpty())
@@ -135,6 +138,12 @@
   </div>
 
   <style>
+    /* ============ SİYAH TEMA ============ */
+    .reviews-dark { background: var(--ink); color: var(--cream); }
+    .reviews-dark .section-head h2 { color: var(--cream); }
+    .reviews-dark .section-head h2 em { color: var(--gold); }
+    .reviews-dark .section-head p  { color: rgba(252,250,245,0.75); }
+
     /* ============ DEĞERLENDİRMELER CAROUSEL ============ */
     .reviews-wrap {
       position: relative;

@@ -339,6 +339,14 @@
     </div>
   </section>
 
+  {{-- KATILIMCI DEĞERLENDİRMELERİ (Genel) --}}
+  @include('partials.product-reviews', [
+    'reviewsTitle'      => 'Deneyimlerini <em>kendi sözleriyle</em> anlatıyorlar',
+    'reviewsIntro'      => '',
+    'reviewDefaultSlug' => 'genel',
+    'reviewsDark'       => true,
+  ])
+
   {{-- EĞİTİM İÇERİĞİ VE KATILIM --}}
   <section id="egitim-icerigi" aria-labelledby="icerik-title" style="padding: 50px 0; scroll-margin-top: 80px;">
     <div class="container">
@@ -453,13 +461,6 @@
       </div>
     </div>
   </section>
-
-  {{-- KATILIMCI DEĞERLENDİRMELERİ (Genel) --}}
-  @include('partials.product-reviews', [
-    'reviewsTitle'      => 'BRY Metodu Eğitimi <em>Değerlendirmeleri</em>',
-    'reviewsIntro'      => 'BRY Metodu ile tanışan katılımcıların genel değerlendirmelerini aşağıda inceleyebilirsin.',
-    'reviewDefaultSlug' => 'genel',
-  ])
 
   {{-- FAQ --}}
   <section class="alt" aria-labelledby="faq-title" style="padding: 50px 0;">
