@@ -9,6 +9,7 @@ use App\Http\Controllers\Admin\GalleryPhotoController;
 use App\Http\Controllers\Admin\KurumsalPhotoController;
 use App\Http\Controllers\Admin\PageSeoController;
 use App\Http\Controllers\Admin\PostController;
+use App\Http\Controllers\Admin\RedirectController;
 use App\Http\Controllers\Admin\ReferenceController;
 use App\Http\Controllers\Admin\SettingsController;
 use App\Http\Controllers\Admin\TestimonialController;
@@ -33,6 +34,9 @@ Route::prefix('admin')->name('admin.')->group(function () {
         // Site Settings (group bazlı tabs)
         Route::get('settings/{group?}', [SettingsController::class, 'index'])->name('settings.index');
         Route::post('settings/{group}', [SettingsController::class, 'update'])->name('settings.update');
+
+        // 301 Yönlendirmeler
+        Route::resource('redirects', RedirectController::class)->except(['show']);
 
         // SEO Settings (sayfa bazlı)
         Route::get('seo', [PageSeoController::class, 'index'])->name('seo.index');
