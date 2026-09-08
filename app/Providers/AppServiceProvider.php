@@ -108,5 +108,26 @@ class AppServiceProvider extends ServiceProvider
                 'captchaQuestion'  => "$a + $b = ?",
             ]);
         });
+
+        // BRY Metodu Eğitimi sayfası — sadece "Genel Değerlendirme" yorumları + captcha
+        View::composer('pages.programs.bry-methodu-egitimi', function ($view) {
+            try {
+                $reviews = Schema::hasTable('product_reviews')
+                    ? ProductReview::approved()->forProduct('genel')
+                        ->orderBy('sort')->orderByDesc('created_at')->get()
+                    : collect();
+            } catch (\Throwable $e) {
+                $reviews = collect();
+            }
+
+            $a = random_int(2, 9);
+            $b = random_int(2, 9);
+            session(['review_captcha' => (string) ($a + $b)]);
+
+            $view->with([
+                'productReviews'   => $reviews,
+                'captchaQuestion'  => "$a + $b = ?",
+            ]);
+        });
     }
 }

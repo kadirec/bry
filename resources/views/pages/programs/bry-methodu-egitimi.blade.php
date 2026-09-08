@@ -454,6 +454,13 @@
     </div>
   </section>
 
+  {{-- KATILIMCI DEĞERLENDİRMELERİ (Genel) --}}
+  @include('partials.product-reviews', [
+    'reviewsTitle'      => 'BRY Metodu Eğitimi <em>Değerlendirmeleri</em>',
+    'reviewsIntro'      => 'BRY Metodu ile tanışan katılımcıların genel değerlendirmelerini aşağıda inceleyebilirsin.',
+    'reviewDefaultSlug' => 'genel',
+  ])
+
   {{-- FAQ --}}
   <section class="alt" aria-labelledby="faq-title" style="padding: 50px 0;">
     <div class="container">
