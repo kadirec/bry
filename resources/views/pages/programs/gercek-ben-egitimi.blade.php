@@ -821,7 +821,7 @@
           <span class="spot s4">Birebir Gerçek Ben Pekiştirme Seansı.</span>
         </span>
       </div>
-      <a href="#" target="_blank" rel="noopener" class="sticky-cta-btn">
+      <a href="https://www.paytr.com/link/LJTqZ5c" target="_blank" rel="noopener" class="sticky-cta-btn">
         <span class="cta-label-full">Gerçek Sen'le Tanış</span>
         <span class="cta-label-short">Satın Al</span>
         <span aria-hidden="true">→</span>
