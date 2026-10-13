@@ -4,6 +4,7 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <meta name="google-site-verification" content="qgrfzqDpLJq5RU5ejnXf1JTFY2AF-5BkVYR0dvG1lms" />
+<meta name="facebook-domain-verification" content="ybwufe0grkvujfvxur0buj1gd8svx" />
 {{-- Google tag (gtag.js) --}}
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-6K29847WWV"></script>
 <script>
